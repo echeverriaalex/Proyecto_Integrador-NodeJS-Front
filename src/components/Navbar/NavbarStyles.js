@@ -22,6 +22,7 @@ export const MainNavbarWrapper = styled.nav`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    height: 80px;
     gap: 30px;
     padding: 10px 30px;
 

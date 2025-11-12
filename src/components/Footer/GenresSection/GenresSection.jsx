@@ -3,10 +3,11 @@ import { GenresContainerStyled, ItemContainerStyled } from "./GenresSectionStyle
 import { getGenresMoviesFromAPI } from "../../../axios/axios-movies";
 import { useNavigate } from "react-router-dom";
 import { isError, isFetching, success} from "../../../redux/slice/genresSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const GenresSection = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { genresList, isLoading, error} = useSelector((state) => state.genres);
 
     const fetchGenresList = async () => {

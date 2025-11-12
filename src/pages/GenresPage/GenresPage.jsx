@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonsContainerStyled, GenresPageWrapper, HeroContainerStyled } from "./GenresPageStyles";
 import { getGenresMoviesFromAPI, getMoviesbyGenreFromAPI } from "../../axios/axios-movies";
 import { useParams } from "react-router-dom";

@@ -1,45 +1,16 @@
-import { useEffect, useState } from "react";
-import { getAllMoviesFromAPI, getAllMoviesFromAPITMDB } from "../../../axios/axios-movies";
 import Card from "../Card/Card";
 import { CatalogContainerStyled, ProductCatalogWrapper } from "./ProductCatalogStyles";
-import Button from "../../UI/Button/Button";
 
-const ProductCatalog = ( { movies } ) => {
-
-    /*
-    const [ products, setProducts ] = useState([]);
-    const [ currentPage, setCurrentPage ] = useState(1);
-
-    const fetchProducts = async () => {
-        try {
-            const productsList = await getAllMoviesFromAPITMDB(currentPage);
-            setProducts(productsList.results);
-            console.log(productsList.results)
-            return productsList.results;
-        }
-        catch (error) {
-            console.error("Error fetching products:", error);
-        }
-    }
-    
-
-    useEffect(() => {
-        fetchProducts();
-        
-    }, [currentPage]);
-    
-    */
-
+const ProductCatalog = ({ movies }) => {
     return (
         <ProductCatalogWrapper>
-            {   
+            {
                 movies?  (
                     <CatalogContainerStyled>
                         {
                             movies?.map((movie) => (
                                 <Card 
-                                    key = {movie?.id}
-                                    
+                                    key = {movie?.id}                                    
                                     adult = {movie?.adult}
                                     backdrop_path = {movie?.backdrop_path}
                                     genre_ids = {movie?.genre_ids}
@@ -62,7 +33,6 @@ const ProductCatalog = ( { movies } ) => {
                     <p>No products found.</p>
                 )
             }
-
         </ProductCatalogWrapper>
     );
 }

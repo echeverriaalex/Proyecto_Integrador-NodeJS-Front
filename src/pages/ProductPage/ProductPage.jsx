@@ -11,10 +11,7 @@ const ProductPage = () => {
     const { id } = useParams();
 
     const fetchProductDetails = async() => {
-        // Logic to fetch product details based on ID from route params
         try {
-            // Example: const response = await axios.get(`/api/products/${id}`);
-            // console.log(response.data);
             const productDetails = await getMovieDetailsFromAPITMDB(id);
             console.log(productDetails);
             setDetails(productDetails);

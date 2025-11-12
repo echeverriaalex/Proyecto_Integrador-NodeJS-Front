@@ -1,0 +1,54 @@
+import SearchBar from "../UI/SearchBar/SearchBar";
+import { IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper } from "./NavbarStyles";
+import Logo from "../../assets/cinespace-logo.png";
+import ModalMenu from "./ModalMenu/ModalMenu";
+
+
+import MenuIcon from "./components/MenuIcon/MenuIcon";
+import CartIcon from "./components/CartIcon/CartIcon";
+
+const Navbar = () => {
+
+    
+
+    return (
+        <NavbarWrapper className="bg-blue-200 p-4">
+            <ModalMenu />
+            
+
+            <MobileContainerStyled>
+                <IconsContainerStyled>
+                    <MenuIcon />
+
+                    <LogoContainerStyled to="/">
+                        <img src={Logo} alt="Logo"/>
+                    </LogoContainerStyled>
+
+                    <CartIcon />
+                </IconsContainerStyled>
+                <SearchBar />
+            </MobileContainerStyled>
+
+
+            <MainNavbarWrapper>
+                <LogoContainerStyled to="/">
+                    <img src={Logo} alt="Logo"/>
+                </LogoContainerStyled>
+                <LinksContainerStyled>
+                    <LinkContainerStyled to="/">Home</LinkContainerStyled>
+                    <LinkContainerStyled to="/">Series</LinkContainerStyled>
+                    <LinkContainerStyled to="/">Movies</LinkContainerStyled>
+                    <LinkContainerStyled to="/">MyList</LinkContainerStyled>
+                    <LinkContainerStyled to="/about">About</LinkContainerStyled>
+                    <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
+                </LinksContainerStyled>
+
+
+                <SearchBar />
+            </MainNavbarWrapper>
+            
+        </NavbarWrapper>
+    )
+}
+
+export default Navbar;

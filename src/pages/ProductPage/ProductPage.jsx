@@ -53,12 +53,13 @@ const ProductPage = () => {
                         <p>{details?.overview}</p>
                         
                         <p>Rating: {details?.vote_average}</p>
-                        <p>vote_count: {details?.vote_count}</p>
-                        
+                        { /* 
+                        <p>vote_count: {details?.vote_count}</p>                        
                         <p>Budget: ${details?.budget}</p>
                         <p>Revenue: ${details?.revenue}</p>
-                        { /* <p>id: {details?.id}</p> */ }
+                        <p>id: {details?.id}</p> 
                         <p>popularity: {details?.popularity}</p>
+                        */ }
                         <p>Produced in {details?.production_countries.map(country => country.name).join(", ")}</p>
                         
                         <p>Languages: {details?.spoken_languages.map(language => language.name).join(", ")}</p>

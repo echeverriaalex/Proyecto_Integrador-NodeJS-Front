@@ -14,7 +14,7 @@ export const FooterContainerStyled = styled.div`
     width: 100%;
 
     @media (max-width: 576px){
-        padding: 5px;
+        padding: 50px 5px;
         //background-color: #b12f08ff;
     }
 `;

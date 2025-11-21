@@ -1,4 +1,7 @@
 import styled from "styled-components";
+//import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+
 
 export const CardContainerStyled = styled.div`    
     border-radius: 8px;
@@ -68,4 +71,24 @@ export const DataContainerStyled = styled.div`
         width: 100%;
         height: unset;
     }
+`;
+
+
+
+
+
+export const SkeletonCardStyled = styled(Stack)`
+    //spacing: 1;
+    width: 100%;
+    height: 100%;
+    
+    /*
+    & > .MuiSkeleton-root {
+        variant: "rounded";
+        width: 100%;
+        //height: 200px;
+
+        background-color: #f0ededff;
+    }
+    */
 `;

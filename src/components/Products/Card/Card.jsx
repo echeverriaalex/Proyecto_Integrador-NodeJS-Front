@@ -1,8 +1,8 @@
 import { IMG_URL } from "../../../utils/constants";
-import { CardContainerStyled, DataContainerStyled, ImageContainerStyled } from "./CardStyles";
+import { CardContainerStyled, DataContainerStyled, ImageContainerStyled, SkeletonCardStyled } from "./CardStyles";
 import { useNavigate } from "react-router-dom";
 
-
+import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
 import Box from '@mui/material/Box';
 
@@ -40,22 +40,41 @@ const Card = ({ adult, backdrop_path, genre_ids, id, original_language,
         ) : 
         
         (
-            <Box
-                sx={{
-                    bgcolor: '#121212',
-                    p: 8,
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}
-            >
-                <Skeleton
-                    sx={{ bgcolor: 'grey.900' }}
-                    variant="rectangular"
-                    width={210}
-                    height={118}
-                />
-            </Box>
+            <>
+                {/*}
+                <Box
+                    sx={{
+                        bgcolor: '#121212',
+                        p: 8,
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Skeleton
+                        sx={{ bgcolor: 'grey.900' }}
+                        variant="rectangular"
+                        width={210}
+                        height={118}
+                    />
+                </Box>
+                */}
+
+                <SkeletonCardStyled >
+                    {/* For variant="text", adjust the height via font-size 
+                    
+                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    <Skeleton variant="circular" width={40} height={40} />
+                    <Skeleton variant="rectangular" width={210} height={60} />
+
+                    <Skeleton variant="rounded" width="100%" height={200} />
+                    */}
+                    
+                    <img src={`${IMG_URL}${poster_path}`} alt={title} />
+                    
+                    
+                </SkeletonCardStyled>
+            </>
         )
     );
 }

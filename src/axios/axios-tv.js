@@ -1,19 +1,7 @@
 import axios from "axios";
-import { API_URL_MOVIE, API_URL_MOVIES_GENRES, API_URL_MOVIES_PAGES, TOKEN } from "../utils/constants";
+import { API_URL_TV, API_URL_TV_GENRES, API_URL_TV_PAGES, TOKEN } from "../utils/constants";
 
-/*
-export const getAllMoviesFromAPI = async () => {
-    try{
-        const response = await axios.get(API_URL_ALL);
-        return response.data;
-    }
-    catch(error){
-        console.error("Error fetching movies:", error);
-    }
-};
-*/
-
-export const getAllMoviesFromAPITMDB = async (page) => {
+export const getAllTvFromAPITMDB = async (page) => {
     try{
         const options = {
             method: 'GET',
@@ -23,17 +11,15 @@ export const getAllMoviesFromAPITMDB = async (page) => {
                 Authorization: `Bearer ${TOKEN}`
             }
         };
-        const response = await axios.get(`${API_URL_MOVIES_PAGES}?page=${page}`, options);
+        const response = await axios.get(`${API_URL_TV_PAGES}?page=${page}`, options);
         return response.data;
     }
     catch(error){
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching Tv series:", error);
     }
 };
 
-
-
-export const getMovieDetailsFromAPITMDB = async (id) => {
+export const getTvGenresFromAPI = async () => {
     try{
         const options = {
             method: 'GET',
@@ -42,17 +28,20 @@ export const getMovieDetailsFromAPITMDB = async (id) => {
                 Authorization: `Bearer ${TOKEN}`
             }
         };
-        const response = await axios.get(`${API_URL_MOVIE}/${id}`, options);
+        const response = await axios.get(`${API_URL_TV_GENRES}`, options);
         return response.data;
     }
     catch(error){
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching Tv series:", error);
     }
 };
 
 
 
-export const getMoviesGenresFromAPI = async () => {
+
+
+
+export const getTvbyGenreFromAPI = async (genres, page) => {
     try{
         const options = {
             method: 'GET',
@@ -61,15 +50,16 @@ export const getMoviesGenresFromAPI = async () => {
                 Authorization: `Bearer ${TOKEN}`
             }
         };
-        const response = await axios.get(`${API_URL_MOVIES_GENRES}`, options);
+        const response = await axios.get(`${API_URL_TV_PAGES}?with_genres=${genres}&page=${page}`, options);
         return response.data;
     }
     catch(error){
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching tv shows:", error);
     }
 };
 
-export const getMoviesbyGenreFromAPI = async (genres, page) => {
+
+export const getTvDetailsFromAPITMDB = async (id) => {
     try{
         const options = {
             method: 'GET',
@@ -78,10 +68,10 @@ export const getMoviesbyGenreFromAPI = async (genres, page) => {
                 Authorization: `Bearer ${TOKEN}`
             }
         };
-        const response = await axios.get(`${API_URL_MOVIES_PAGES}?with_genres=${genres}&page=${page}`, options);
+        const response = await axios.get(`${API_URL_TV}/${id}`, options);
         return response.data;
     }
     catch(error){
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching tv details:", error);
     }
 };

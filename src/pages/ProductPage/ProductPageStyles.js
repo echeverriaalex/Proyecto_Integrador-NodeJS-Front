@@ -5,6 +5,7 @@ export const ProductPageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 5px;
     
     //background-color: #f5f5f5;
@@ -16,9 +17,11 @@ export const ProductPageWrapper = styled.div`
 
 export const ProductContainerStyled = styled.div`
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 10px;
+
+    //background-color: #0f6e0fff;
 
     @media (max-width: 576px) {
         flex-direction: column;
@@ -57,7 +60,7 @@ export const DetailsContainerStyled = styled.div`
     background-color: #094369ff;
     border-radius: 10px;
 
-    padding: 10px;
+    padding: 30px 20px;
 
     h2,p{
         color: white;
@@ -98,6 +101,8 @@ export const ImagesProductionsContainerStyled = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
 `;
 
 export const ImageProductionStyled = styled.div`

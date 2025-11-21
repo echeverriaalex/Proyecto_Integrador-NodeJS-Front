@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { GenresContainerStyled, ItemContainerStyled, ItemsContainerStyled } from "./GenresStyles";
-import { getGenresMoviesFromAPI } from "../../axios/axios-movies";
-import WallpaperGenres from "../../utils/setWallpaperGenres";
+import { GenresContainerStyled, ItemContainerStyled, ItemsContainerStyled } from "../GenresStyles";
+import { getMoviesGenresFromAPI } from "../../../axios/axios-movies";
+import WallpaperGenres from "../../../utils/setWallpaperGenres";
 import { useNavigate } from "react-router-dom";
 
-const Genres = () => {
+const MoviesGenres = () => {
 
     const [genres, setGenres] = useState([]);
     const navigate = useNavigate();
     
     const fetchGenres = async () => {
-        const genresList = await getGenresMoviesFromAPI();
+        const genresList = await getMoviesGenresFromAPI();
         setGenres(genresList.genres);
         console.log(genresList.genres);
         return genresList;
@@ -22,11 +22,11 @@ const Genres = () => {
 
     return (
         <GenresContainerStyled>
-            <h2>Genres</h2>
+            <h2>Movies Genres</h2>
             <ItemsContainerStyled>
                 {
                     genres.map((genre) => (
-                        <ItemContainerStyled 
+                        <ItemContainerStyled
                             key={genre.id}
                             background={WallpaperGenres[genre?.name]}
                             onClick={() => navigate(`/movies/${genre.name}`)}
@@ -39,4 +39,4 @@ const Genres = () => {
         </GenresContainerStyled>
     );
 };
-export default Genres;
+export default MoviesGenres;

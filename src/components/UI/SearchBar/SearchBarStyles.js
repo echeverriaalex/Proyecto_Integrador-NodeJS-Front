@@ -2,16 +2,22 @@ import styled from "styled-components";
 import { CiSearch } from "react-icons/ci";
 
 export const SearchBarContainerStyled = styled.div`
-    border-radius: 10px;
-    padding: 8px 15px;
+    border-radius: 10px;    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     gap: 10px;
-    min-width: 150px;
-    max-width: 350px;
-    background-color: white;
+    padding: 8px;
+    //background-color: #da1212ff;
+    transition: all 1s linear;
+
+    ${({ expand }) => expand && `
+        background-color: #fff;
+        min-width: 150px;
+        max-width: 350px;
+        width: 100%;
+        padding: 8px 15px;
+    `}
 
     @media (max-width: 576px) {
         //flex-direction: column;
@@ -30,5 +36,17 @@ export const SearchBarStyled = styled.input`
 export const SearchIconStyled = styled(CiSearch)`
     font-size: 1.5rem;
     cursor: pointer;
-    color: black;
+    color: #fff;
+
+
+    ${({ expand }) => expand && `
+        /*
+        background-color: #fff;
+        min-width: 150px;
+        max-width: 350px;
+        width: 100%;
+        padding: 8px 15px;
+        */
+        color: #000;
+    `}
 `;

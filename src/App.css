@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import '@skeletonlabs/skeleton'; /* [!code ++] */
+@import '@skeletonlabs/skeleton-react'; /* [!code ++] */
+@import '@skeletonlabs/skeleton/themes/cerberus'; /* [!code ++] */
+
 
 /*
 #root {

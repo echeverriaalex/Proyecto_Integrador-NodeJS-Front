@@ -36,9 +36,9 @@ const Navbar = () => {
                 </LogoContainerStyled>
                 <LinksContainerStyled>
                     <LinkContainerStyled to="/">Home</LinkContainerStyled>
-                    <LinkContainerStyled to="/">Series</LinkContainerStyled>
-                    <LinkContainerStyled to="/">Movies</LinkContainerStyled>
-                    <LinkContainerStyled to="/">MyList</LinkContainerStyled>
+                    <LinkContainerStyled to="/series">Series</LinkContainerStyled>
+                    <LinkContainerStyled to="/movies">Movies</LinkContainerStyled>
+                    <LinkContainerStyled to="/mylist">MyList</LinkContainerStyled>
                     <LinkContainerStyled to="/about">About</LinkContainerStyled>
                     <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
                 </LinksContainerStyled>

@@ -29,5 +29,4 @@ export const CatalogContainerStyled = styled.div`
         gap: 10px;
         grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
     }
-        
 `;

@@ -1,36 +1,49 @@
+import { useDispatch } from "react-redux";
+import SkeletonCard from "../../SkeletonCard/SkeletonCard";
 import Card from "../Card/Card";
 import { CatalogContainerStyled, ProductCatalogWrapper } from "./ProductCatalogStyles";
+import { setTypeProductShow } from "../../../redux/slice/typeProductShowSlice";
+    
+const ProductCatalog = ({ dataList, typeProduct }) => {
 
-const ProductCatalog = ({ movies }) => {
+    const dispatch = useDispatch();
+    dispatch(setTypeProductShow(typeProduct));
+
     return (
         <ProductCatalogWrapper>
             {
-                movies?  (
+                dataList ? (
                     <CatalogContainerStyled>
                         {
-                            movies?.map((movie) => (
-                                <Card 
-                                    key = {movie?.id}                                    
-                                    adult = {movie?.adult}
-                                    backdrop_path = {movie?.backdrop_path}
-                                    genre_ids = {movie?.genre_ids}
-                                    id = {movie?.id}
-                                    original_language = {movie?.original_language}
-                                    original_title = {movie?.original_title}
-                                    overview = {movie?.overview}
-                                    popularity = {movie?.popularity}
-                                    poster_path = {movie?.poster_path}
-                                    release_date = {movie?.release_date}
-                                    title = {movie?.title}
-                                    video = {movie?.video}
-                                    vote_average = {movie?.vote_average}
-                                    vote_count = {movie?.vote_count}
+                            dataList?.map((item) => (
+                                <Card
+                                    key = {item?.id}
+                                    adult = {item?.adult}
+                                    backdrop_path = {item?.backdrop_path}
+                                    genre_ids = {item?.genre_ids}
+                                    id = {item?.id}
+                                    original_language = {item?.original_language}
+                                    original_title = {item?.original_title}
+                                    overview = {item?.overview}
+                                    popularity = {item?.popularity}
+                                    poster_path = {item?.poster_path}
+                                    release_date = {item?.release_date}
+                                    title = {item?.title}
+                                    video = {item?.video}
+                                    vote_average = {item?.vote_average}
+                                    vote_count = {item?.vote_count}
                                 />
                             ))
                         }
                     </CatalogContainerStyled>
                 ) : (
-                    <p>No products found.</p>
+                    <CatalogContainerStyled>
+                        {
+                            Array.from({ length: 20 }).map((_, index) => (
+                                <SkeletonCard key={index} />
+                            ))
+                        }
+                    </CatalogContainerStyled>
                 )
             }
         </ProductCatalogWrapper>

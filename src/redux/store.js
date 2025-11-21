@@ -5,19 +5,23 @@ import persistStore from 'redux-persist/es/persistStore';
 
 
 import moviesReducer from './slice/moviesSlice';
+import tvReducer from './slice/tvSlice';
 import genresReducer from './slice/genresSlice';
 import menuReducer from './slice/menuSLice';
+import typeProductShowReducer from './slice/typeProductShowSlice';
 
 const reducers = combineReducers({
     movies: moviesReducer,
+    tv: tvReducer,
     genres: genresReducer,
     menu: menuReducer,
+    typeProductShow: typeProductShowReducer,
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['movies', 'cart']
+    whitelist: ['products', 'cart']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers);

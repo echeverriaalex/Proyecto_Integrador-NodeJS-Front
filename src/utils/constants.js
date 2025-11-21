@@ -1,12 +1,24 @@
 //export const BASE_URL2 = "http://www.omdbapi.com/";
+//export const API_URL_ALL = "https://api.tvmaze.com/shows";
 
-export const API_URL_ALL = "https://api.tvmaze.com/shows";
-export const API_URL_MOVIES_PAGES = "https://api.themoviedb.org/3/discover/movie";
+// URL details movie API endpoint
 export const API_URL_MOVIE = "https://api.themoviedb.org/3/movie";
+export const API_URL_TV = "https://api.themoviedb.org/3/tv";
+
+// URL movies pages API endpoint
+export const API_URL_MOVIES_PAGES = "https://api.themoviedb.org/3/discover/movie";
+export const API_URL_TV_PAGES = "https://api.themoviedb.org/3/discover/tv";
 
 // TMDB image base URL
-export const IMG_URL = "https://image.tmdb.org/t/p/original";
-export const API_URL_GENRES = "https://api.themoviedb.org/3/genre/movie/list";
+export const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+// Genres API endpoints
+export const API_URL_MOVIES_GENRES = "https://api.themoviedb.org/3/genre/movie/list";
+export const API_URL_TV_GENRES = "https://api.themoviedb.org/3/genre/tv/list";
+
+
+
+
 
 //https://api.themoviedb.org/3/discover/movie?with_genres=28&page=1
 

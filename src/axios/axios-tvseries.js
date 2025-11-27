@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL_TV, API_URL_TV_GENRES, API_URL_TV_PAGES, TOKEN } from "../utils/constants";
 
-export const getAllTvFromAPITMDB = async (page) => {
+export const getTvSeriesByPage = async (page) => {
     try{
         const options = {
             method: 'GET',
@@ -15,11 +15,28 @@ export const getAllTvFromAPITMDB = async (page) => {
         return response.data;
     }
     catch(error){
-        console.error("Error fetching Tv series:", error);
+        console.error("Error fetching Tv series from API ", error);
     }
 };
 
-export const getTvGenresFromAPI = async () => {
+export const getTvSerieDetailsByID = async (id) => {
+    try{
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${TOKEN}`
+            }
+        };
+        const response = await axios.get(`${API_URL_TV}/${id}`, options);
+        return response.data;
+    }
+    catch(error){
+        console.error("Error fetching Tv series from API by ID ", error);
+    }
+};
+
+export const getTvSeriesGenres = async () => {
     try{
         const options = {
             method: 'GET',
@@ -36,12 +53,7 @@ export const getTvGenresFromAPI = async () => {
     }
 };
 
-
-
-
-
-
-export const getTvbyGenreFromAPI = async (genres, page) => {
+export const getTvbyGenrePaginated = async (genres, page) => {
     try{
         const options = {
             method: 'GET',
@@ -55,23 +67,5 @@ export const getTvbyGenreFromAPI = async (genres, page) => {
     }
     catch(error){
         console.error("Error fetching tv shows:", error);
-    }
-};
-
-
-export const getTvDetailsFromAPITMDB = async (id) => {
-    try{
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${TOKEN}`
-            }
-        };
-        const response = await axios.get(`${API_URL_TV}/${id}`, options);
-        return response.data;
-    }
-    catch(error){
-        console.error("Error fetching tv details:", error);
     }
 };

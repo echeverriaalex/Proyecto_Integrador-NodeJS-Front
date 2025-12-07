@@ -1,7 +1,8 @@
 import styled from "styled-components";
 //import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const CardContainerStyled = styled.div`    
     border-radius: 8px;
@@ -15,6 +16,22 @@ export const CardContainerStyled = styled.div`
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transform: scale(1.05);
         padding: 3px;
+    }
+        
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    //overflow: hidden;    
+
+    img{
+        width: 100%;
+        height: 100%;
+        //object-fit: cover;
+    }
+
+    @media (max-width: 576px) {
+        min-width: 220px;
     }
 `;
 
@@ -60,9 +77,6 @@ export const DataContainerStyled = styled.div`
     gap: 5px;
     display: flex;
     display: none;
-
-    
-
     background-color: #0c3f05d1;
 
     h2{
@@ -71,24 +85,4 @@ export const DataContainerStyled = styled.div`
         width: 100%;
         height: unset;
     }
-`;
-
-
-
-
-
-export const SkeletonCardStyled = styled(Stack)`
-    //spacing: 1;
-    width: 100%;
-    height: 100%;
-    
-    /*
-    & > .MuiSkeleton-root {
-        variant: "rounded";
-        width: 100%;
-        //height: 200px;
-
-        background-color: #f0ededff;
-    }
-    */
 `;

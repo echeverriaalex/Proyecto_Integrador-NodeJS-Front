@@ -1,4 +1,92 @@
 import { useEffect, useState } from "react";
+import { ButtonsContainerStyled, GenrePageWrapper, HeroContainerStyled } from "./GenrePageStyles";
+import { useLocation } from "react-router-dom";
+import WallpaperGenres from "../../utils/setWallpaperGenres";
+import ProductCatalog from "../../components/ProductCatalog/ProductCatalog";
+import Button from "../../components/UI/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { isError, isFetching, success } from "../../redux/slice/productsSlice";
+import { selectFetchGenreProductsByTypePaginated } from "../../utils/extraFunctions";
+
+const GenrePage = () => {
+
+    // Verificado y utilizado
+    const location = useLocation();
+    const { idGenre, genre: genreName, category } = location.state || {};
+    const [currentPage, setCurrentPage] = useState(1);
+    const dispatch = useDispatch();
+    const { productList, isLoading, error} = useSelector((state) => state.products);
+
+
+    // revisar
+    const [showLoading, setShowLoading] = useState(true);
+    
+    const fetchProductsGenre = async () => {
+        try{
+            dispatch(isFetching());
+            const fetchGenreProductsFunction = selectFetchGenreProductsByTypePaginated(category);
+            const productsData = await fetchGenreProductsFunction(idGenre, currentPage);
+            console.log(productsData.results);
+            dispatch(success(productsData.results));
+            return productsData.results;
+        }catch(error){
+            dispatch(isError(error));
+            console.error(`Error loading ${genreName} products. `, error);
+        }
+    }
+
+    useEffect(() => {
+        fetchProductsGenre();
+        
+        window.scrollTo(0, 0);
+        console.log('Recibi datos desde la url', location.state);
+
+
+        /*        
+        const timer = setTimeout(() => {
+            setShowLoading(false);
+        }, 3000);
+        return () => clearTimeout(timer);
+        */
+
+    }, [currentPage]);
+    
+    return (
+        <GenrePageWrapper>
+            <HeroContainerStyled $wallpaper={WallpaperGenres[genreName]}>
+                <h2 className="text-center">{ genreName }</h2>
+            </HeroContainerStyled>            
+            
+            <ProductCatalog dataList={productList} />
+            
+            <ButtonsContainerStyled>
+                <Button
+                    disabled={currentPage == 1}
+                    onClick={() => {
+                        if (currentPage === 1) return;
+                        setCurrentPage(currentPage - 1);
+                    }}
+                >
+                    Previous
+                </Button>
+                <Button 
+                    onClick={() => {
+                        setCurrentPage(currentPage + 1);
+                    }}>
+                    Next
+                </Button>        
+            </ButtonsContainerStyled>
+        </GenrePageWrapper>
+    );
+};
+
+export default GenrePage;
+
+
+
+/* // Esto era movies
+
+import { useEffect, useState } from "react";
 import { ButtonsContainerStyled, GenresPageWrapper, HeroContainerStyled } from "../GenresPageStyles";
 import { getMoviesbyGenreFromAPI, getMoviesGenresFromAPI } from "../../../axios/axios-movies";
 import { useParams } from "react-router-dom";
@@ -6,17 +94,15 @@ import WallpaperGenres from "../../../utils/setWallpaperGenres";
 import ProductCatalog from "../../../components/Products/ProductCatalog/ProductCatalog";
 import Button from "../../../components/UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { isError, isFetching, success } from "../../../redux/slice/moviesSlice";
 import { isError as isErrorGenres, isFetching as isFetchingGenres, success as successGenres } from "../../../redux/slice/genresSlice";
+
 
 const MoviesGenrePage = () => {
 
     const dispatch = useDispatch();
     const { genre } = useParams();
-    //const [moviesGenres, setMoviesGenres] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const { moviesList, isLoading, error} = useSelector((state) => state.movies);
-    //const { genresList, isLoading: genresLoading, error: genresError} = useSelector((state) => state.genres);
     const [showLoading, setShowLoading] = useState(true);
 
     const fetchGenresList = async () => {
@@ -75,7 +161,7 @@ const MoviesGenrePage = () => {
     if(showLoading || !moviesList || moviesList.length === 0 || !currentPage) {
         return (
             <GenresPageWrapper>
-                <HeroContainerStyled wallpaper={WallpaperGenres[genre]}>
+                <HeroContainerStyled $wallpaper={WallpaperGenres[genre]}>
                     <h2 className="text-center">{ genre }</h2>
                 </HeroContainerStyled>
                 <ProductCatalog />
@@ -85,7 +171,7 @@ const MoviesGenrePage = () => {
 
     return (
         <GenresPageWrapper>
-            <HeroContainerStyled wallpaper={WallpaperGenres[genre]}>
+            <HeroContainerStyled $wallpaper={WallpaperGenres[genre]}>
                 <h2 className="text-center">{ genre }</h2>
             </HeroContainerStyled>
 
@@ -119,3 +205,5 @@ const MoviesGenrePage = () => {
 };
 
 export default MoviesGenrePage;
+
+*/

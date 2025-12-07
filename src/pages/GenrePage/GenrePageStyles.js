@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { themePage } from "../../components/styles/GlobalStyles";
 
-export const GenresPageWrapper = styled.div`
+export const GenrePageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@ export const HeroContainerStyled = styled.div`
     justify-content: center;
     width: 100%;
     height: 500px;
-    background-image: url(${props => props?.wallpaper});
+    background-image: url(${props => props.$wallpaper});
     background-size: cover;
     background-position: center;
     color: #fff;

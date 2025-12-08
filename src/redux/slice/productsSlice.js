@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-    moviesList: [],
+    productList: [],
     isLoading: false,
     error: null
 };
 
-const moviesSlice = createSlice({
-    name: 'movies',
+const productsSlice = createSlice({
+    name: 'products',
     initialState: INITIAL_STATE,
     reducers: {
         isFetching: (state) => {
@@ -20,7 +20,7 @@ const moviesSlice = createSlice({
         success: (state, action) => {
             return {
                 ...state,
-                moviesList: [...action.payload],
+                productList: [...action.payload],
                 isLoading: false,
             };
         },
@@ -28,11 +28,11 @@ const moviesSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: "Error fetching movies data in slice."
+                error: "Error fetching products data in slice."
             };
         }
     }
 });
 
-export const { isFetching, success, isError } = moviesSlice.actions;
-export default moviesSlice.reducer;
+export const { isFetching, success, isError } = productsSlice.actions;
+export default productsSlice.reducer;

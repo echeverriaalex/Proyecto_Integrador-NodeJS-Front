@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { GenresContainerStyled, ItemContainerStyled } from "./GenresSectionStyles";
-import { getMoviesGenresFromAPI } from "../../../axios/axios-movies";
+import { getMoviesGenres } from "../../../axios/axios-movies";
 import { useNavigate } from "react-router-dom";
 import { isError, isFetching, success} from "../../../redux/slice/genresSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ const GenresSection = () => {
     const fetchGenresList = async () => {
         try{
             dispatch(isFetching());
-            const genresList = await getMoviesGenresFromAPI();
+            const genresList = await getMoviesGenres();
 
             if(genresList) {
                 dispatch(success(genresList?.genres));

@@ -49,7 +49,7 @@ export const ItemContainerStyled = styled.div`
     }
 
     &&:hover{
-        background-image: url(${props => props?.background});
+        background-image: url(${props => props.$background});
         background-size: cover;
         background-position: center;
         color: #000;

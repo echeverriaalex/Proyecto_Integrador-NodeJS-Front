@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GenresContainerStyled, ItemContainerStyled, ItemsContainerStyled } from "./GenresStyles";
 import WallpaperGenres from "../../utils/setWallpaperGenres";
 import { useNavigate } from "react-router-dom";
@@ -11,52 +11,38 @@ const Genres = () => {
     // Constantes correctas y utilizadas    
     const { genresList } = useSelector((state) => state.genres);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     // Constantes a revisar tu implementacion
     const { typeProduct } = useSelector((state) => state.typeProductShow);
     
-    const navigate = useNavigate();
-    const [showLoading, setShowLoading] = useState(true);
-    
-
     const fetchGenres = async() => {
         try{
             dispatch(isFetching());
             const fecthGenresProduct  = selectFetchGenreByType(typeProduct);
-            const genresList = await fecthGenresProduct();
-            //setGenres(genresList.genres);
-            dispatch(success(genresList.genres));
-            console.log(genresList.genres);
-            
-            return genresList;
+            const genresData = await fecthGenresProduct();
+            dispatch(success(genresData.genres));
+            return genresData;
         }catch(error){
-            dispatch(isError());
+            dispatch(isError(error));
             console.error("Error fetching genres:", error);
         }
     };
 
     useEffect(() => {
+        if (!typeProduct) return;
         fetchGenres();
-        
-        const timer = setTimeout(() => {
-            setShowLoading(false);
-        }, 2000);
-
-        return () => clearTimeout(timer);
-
-
-    }, []);
+    }, [typeProduct]);
 
     return (
         <GenresContainerStyled>
-            <h2> Generos </h2>
             <ItemsContainerStyled>
                 {
                     genresList.map((genre) => (
                         <ItemContainerStyled
                             key={genre.id}
-                            //background={WallpaperGenres[genre?.name]}
+                            $background={WallpaperGenres[genre.name]}
                             onClick={
                                 typeProduct === "tvseries" ? 
                                     () => navigate(`/tvseries/${genre.name}`) 

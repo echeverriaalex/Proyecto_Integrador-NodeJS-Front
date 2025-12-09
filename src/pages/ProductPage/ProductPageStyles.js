@@ -21,6 +21,23 @@ export const ProductContainerStyled = styled.div`
     justify-content: center;
     gap: 10px;
 
+    background-color: #bb0e0eff;
+
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+
+    animation: fadeIn 1.4s linear;
+
+
     //background-color: #0f6e0fff;
 
     @media (max-width: 576px) {

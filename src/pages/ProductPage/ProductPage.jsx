@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { ContainerProductionsStyled, DataContainerStyled, DetailsContainerStyled, ImageContainerStyled, ImageProductionStyled, ImagesProductionsContainerStyled, ProductContainerStyled, ProductPageWrapper } from "./ProductPageStyles";
 import { useParams } from "react-router-dom";
-import { getMovieDetailsFromAPITMDB } from "../../axios/axios-movies";
 import { IMG_URL } from "../../utils/constants";
-import { extractYear, formatRating, formatRuntime } from "../../utils/extraFunctions";
+import { extractYear, formatRating, formatRuntime, selectFetchDetailsProductsByType } from "../../utils/extraFunctions";
 import { useSelector } from "react-redux";
-import { getTvDetailsFromAPITMDB } from "../../axios/axios-tv";
 
 const ProductPage = () => {
 
@@ -14,9 +12,10 @@ const ProductPage = () => {
     const [showLoading, setShowLoading] = useState(true);
     const { typeProduct } = useSelector((state) => state.typeProductShow);
 
-    const fetchTvDetails = async() => {
+    const fetchProductDetails = async() => {
         try {
-            const productDetails = await getTvDetailsFromAPITMDB(id);
+            const fetchDetailsFunction = selectFetchDetailsProductsByType(typeProduct);
+            const productDetails = await fetchDetailsFunction(id);
             console.log(productDetails);
             setDetails(productDetails);
             return productDetails;
@@ -24,20 +23,12 @@ const ProductPage = () => {
             console.error("Error fetching tv details page. ", error);
         }
     }
-    
-    const fetchMovieDetails = async() => {
-        try {
-            const productDetails = await getMovieDetailsFromAPITMDB(id);
-            console.log(productDetails);
-            setDetails(productDetails);
-            return productDetails;
-        } catch (error) {
-            console.error("Error fetching movie details page. ", error);
-        }
-    }
 
     useEffect(() => {
-        typeProduct === "tv" ? fetchTvDetails() : fetchMovieDetails();
+        //typeProduct === "tv" ? fetchTvDetails() : fetchMovieDetails();
+
+
+        fetchProductDetails();
         
         const timer = setTimeout(() => {
             setShowLoading(false);
@@ -46,7 +37,7 @@ const ProductPage = () => {
         return () => clearTimeout(timer);
     }, [id]);
 
-    if( showLoading || !details) {
+    if(showLoading || !details) {
         return(
             <ProductPageWrapper>
                 <ProductContainerStyled>
@@ -73,19 +64,10 @@ const ProductPage = () => {
                 
                 <DetailsContainerStyled>
                     <h2 className="font-bold text-left text-white">{details.title}</h2>
-                    <DataContainerStyled>
-                        
-                        <p>{ extractYear(details.release_date) + " - " + formatRuntime(details.runtime) + " - " +  details.genres.map(genre => genre.name).join(", ")}</p>
-                        
+                    <DataContainerStyled>                        
+                        <p>{ extractYear(details.release_date) + " - " + formatRuntime(details.runtime) + " - " +  details.genres.map(genre => genre.name).join(", ")}</p>                        
                         <p>{details.overview}</p>
                         <p>Rating: { formatRating(details.vote_average)}</p>
-                        { /* 
-                        <p>vote_count: {details?.vote_count}</p>                        
-                        <p>Budget: ${details?.budget}</p>
-                        <p>Revenue: ${details?.revenue}</p>
-                        <p>id: {details?.id}</p> 
-                        <p>popularity: {details?.popularity}</p>
-                        */ }
                         <p>Produced in {details.production_countries.map(country => country.name).join(", ")}</p>
                         <p>Languages: {details.spoken_languages.map(language => language.name).join(", ")}</p>
                     </DataContainerStyled>

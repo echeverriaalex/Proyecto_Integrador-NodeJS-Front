@@ -19,12 +19,11 @@ const Navbar = () => {
             <MobileContainerStyled>
                 <IconsContainerStyled>
                     <MenuIcon />
-
                     <LogoContainerStyled to="/">
                         <img src={Logo} alt="Logo"/>
                     </LogoContainerStyled>
-
                     <CartIcon />
+                    
                 </IconsContainerStyled>
                 <SearchBar />
             </MobileContainerStyled>
@@ -36,7 +35,7 @@ const Navbar = () => {
                 </LogoContainerStyled>
                 <LinksContainerStyled>
                     <LinkContainerStyled to="/">Home</LinkContainerStyled>
-                    <LinkContainerStyled to="/series">Series</LinkContainerStyled>
+                    <LinkContainerStyled to="/tvseries">Tv&Series</LinkContainerStyled>
                     <LinkContainerStyled to="/movies">Movies</LinkContainerStyled>
                     <LinkContainerStyled to="/mylist">MyList</LinkContainerStyled>
                     <LinkContainerStyled to="/about">About</LinkContainerStyled>

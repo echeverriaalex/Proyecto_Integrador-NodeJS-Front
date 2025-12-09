@@ -27,23 +27,31 @@ export const ContainerStyled = styled(motion.div)`
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    width: 250px;
-    /* height: calc(100vh - 4rem); */
     height: calc( 100vh - 40px);
     padding: 15px;
     background: #3c3c3d;
-    background: #000;
     border-radius: 1rem;
     box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
-
-    //overflow-y: auto;
+    width: 400px;
+    max-width: 80%;    
 
     @media (max-width: 576px){
         top: 0px;
         left: 0px;
-        width: 80%;
         border-radius: 0px;
         height: 100vh;
     }
+`;
+
+export const LinksContainerStyled = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+`;
+
+export const LinkContainerStyled = styled((NavLink))`
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 10px;
+    //overflow-wrap: break-word;
 `;

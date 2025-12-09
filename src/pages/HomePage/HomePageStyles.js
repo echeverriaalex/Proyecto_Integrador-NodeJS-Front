@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { themePage } from "../../components/styles/GlobalStyles";
+import Hero from "../..//assets/hero2.jpg";
 
 export const HomePageWrapper = styled.div`
   display: flex;
@@ -22,20 +23,12 @@ export const HeroContainerStyled = styled.div`
   width: 100%;
   gap: 20px;
   padding: 40px;
-  height: 90vh;
-  background-image: url(${props => props.background || '#0c6964ff'});
+  height: 80vh;
+  background-image: url(${Hero});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-opacity: 0.4;
-
-  h2{
-    color: #000;
-    font-size: 3rem;
-    font-weight: bold;
-    //text-shadow: 2px 2px 4px #ffffff;
-    font-family: 'Montserrat', sans-serif;
-  }
+  background-opacity: 0.2;
 `;
 
 export const TextHeroContainerStyled = styled.div`
@@ -43,9 +36,16 @@ export const TextHeroContainerStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 40%;
 
   h2,p{
-    color: #000;
+    color: #777777ff;
+  }
+  
+  h2{
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
   }
 
   p{
@@ -55,30 +55,76 @@ export const TextHeroContainerStyled = styled.div`
   }
 `;
 
-
 export const SectionCardsContainerStyled = styled.div`
-
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   gap: 20px;
-  background-color: #2e0e61ff;
-`;
+  //background-color: #0e6119ff;
+  padding: 20px;
 
+  :nth-child(2) {
+    //background-color: #294629ff;
+    flex-direction: row-reverse;
+  }
+`;
 
 export const CardContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px;
-  background-color: #294629ff;
-
+  gap: 10px;
+  background-color: #083070ff;
+  padding: 20px 40px;
+  border-radius: 20px;
   height: 500px;
+`;
 
-  background-image: url(${props => props.background || 'none'});
-  background-size: cover;
-  background-position: center;
+export const TextCardStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 20px 30px 10px 50px;
+  background: linear-gradient(20deg, #d18108ff, #e48d0aff);
+  clip-text: transparent;
+  -webkit-background-clip: text;
 
+  h2, p{
+    color: #fff;
+    color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h2{
+    font-size: 4rem;
+  }
+
+  p{
+    font-size: 1.3rem;
+  }
+`;
+
+export const ImageCardStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+
+  img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px 30px 10px 50px;
+  }
 `;

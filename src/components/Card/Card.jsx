@@ -5,11 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Card = ({ data  }) => {
 
     const navigate = useNavigate();
-
-
     /*
         Listado de props a pasarle al componente Card::::
-
 
         adult, backdrop_path, genre_ids, id, original_language,
         original_title, overview, popularity, poster_path, release_date, 
@@ -23,7 +20,7 @@ const Card = ({ data  }) => {
             //onClick={() => navigate(`/tv/${genre.name}`)}
         >
             <ImageContainerStyled>
-                <img src={`${IMG_URL}${data.poster_path}`} alt={data.title} />
+                <img src={`${IMG_URL}${data.poster_path}`} alt={data.title || data.name} />
             </ImageContainerStyled>
             {/*
             <DataContainerStyled>

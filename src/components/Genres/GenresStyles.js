@@ -6,30 +6,42 @@ export const GenresContainerStyled = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    background-color: #3c3b0aff;
+    padding: 20px;
 `;
 
 export const ItemsContainerStyled = styled.div`
-    display: grid;
+    
     width: 100%;
+    gap: 5px;
+
+    /*
+    display: grid;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     flex-wrap: wrap;
-    background-color: #3c3b0aff;
-
-    
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    */
+
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+
 `;
 
 export const ItemContainerStyled = styled.div`
     display: flex;
-    width: 100%;
-    height: 100px;
+    
+    //width: 100%;
+    
+    
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #000;
+
+    max-width: 250px;
+    min-width: 250px;
+    height: 150px;
     
     border: 1px solid #ffffff;
     border-radius: 10px;

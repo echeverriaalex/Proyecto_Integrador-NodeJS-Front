@@ -2,17 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import persistStore from 'redux-persist/es/persistStore';
-
-
-import moviesReducer from './slice/moviesSlice';
-import tvReducer from './slice/tvSlice';
+import productsReducer from './slice/productsSlice';
 import genresReducer from './slice/genresSlice';
 import menuReducer from './slice/menuSLice';
 import typeProductShowReducer from './slice/typeProductShowSlice';
 
 const reducers = combineReducers({
-    movies: moviesReducer,
-    tv: tvReducer,
+    products: productsReducer,
     genres: genresReducer,
     menu: menuReducer,
     typeProductShow: typeProductShowReducer,

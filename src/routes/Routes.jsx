@@ -1,23 +1,20 @@
 import HomePage from "../pages/HomePage/HomePage";
 import { Routes as ReactDomRoutes, Route } from "react-router-dom";
-import TvGenresPage from "../pages/GenresPage/Components/TvGenrePage";
-import MoviesGenrePage from "../pages/GenresPage/Components/MoviesGenrePage";
 import ProductPage from "../pages/ProductPage/ProductPage";
-import TvSeriesPage from "../pages/TypeProductsPage/Components/TvSeriesPage";
+import ProductsExplorerPage from "../pages/ProductsExplorerPage/ProductsExplorerPage";
+import GenrePage from "../pages/GenrePage/GenrePage";
 
 function Router() {
   return (
     <ReactDomRoutes>
       <Route path="/" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductPage />} />
-      <Route path="/movies/:genre" element={<MoviesGenrePage />} />
+      
+      <Route path="/tvseries" element={<ProductsExplorerPage />} />
+      <Route path="/tvseries/:genre" element={<GenrePage />} />
 
-
-      <Route path="/series" element={<TvSeriesPage />} />
-
-
-      <Route path="/tv/:genre" element={<TvGenresPage />} />
-
+      <Route path="/movies" element={<ProductsExplorerPage />} />
+      <Route path="/movies/:genre" element={<GenrePage />} />
 
       { /* <Route path="*" element={<NotFoundPage />} /> */}
     </ReactDomRoutes>

@@ -8,12 +8,15 @@ export const NavbarWrapper = styled.nav`
     width: 100%;
     gap: 30px;
     background-color: #041b41ff;
+
     padding: 10px 30px;
+
+    background-color: #1C1C1E;
 
     @media (max-width: 576px) {
         flex-direction: column;
         gap: 15px;
-        padding: 10px;
+        padding: 0px;
     }
 `;
 
@@ -86,12 +89,12 @@ export const LinkContainerStyled = styled(NavLink)`
 export const MobileContainerStyled = styled.div`
     display: none;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     width: 100%;
     height: 150px;
     padding: 5px;
 
-    background-color: #37d410ff;
+    //background-color: #37d410ff;
 
     @media (max-width: 576px) {
         display: flex;
@@ -107,7 +110,7 @@ export const IconsContainerStyled = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    background-color: #5c6606ff;
+    //background-color: #5c6606ff;
 
     @media (max-width: 576px) {
         display: flex;

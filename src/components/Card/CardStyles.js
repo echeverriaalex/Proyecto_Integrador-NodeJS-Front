@@ -22,7 +22,10 @@ export const CardContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    //overflow: hidden;    
+    //overflow: hidden;
+    
+    max-width: 100%;
+    max-height: 100%;
 
     img{
         width: 100%;
@@ -31,7 +34,7 @@ export const CardContainerStyled = styled.div`
     }
 
     @media (max-width: 576px) {
-        min-width: 220px;
+        min-width: 180px;
     }
 `;
 

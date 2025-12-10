@@ -1,6 +1,9 @@
 import SearchBar from "../UI/SearchBar/SearchBar";
 import { IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper } from "./NavbarStyles";
-import Logo from "../../assets/cinespace-logo.png";
+//import Logo from "../../assets/cinespace-logo.png";
+//import Logo from "../../assets/infinity-watch.png";
+//import Logo from "../../assets/infinity-watch2.png";
+import Logo from "../../assets/infinity-watch3.png";
 import ModalMenu from "./ModalMenu/ModalMenu";
 
 
@@ -8,8 +11,6 @@ import MenuIcon from "./components/MenuIcon/MenuIcon";
 import CartIcon from "./components/CartIcon/CartIcon";
 
 const Navbar = () => {
-
-    
 
     return (
         <NavbarWrapper className="bg-blue-200 p-4">

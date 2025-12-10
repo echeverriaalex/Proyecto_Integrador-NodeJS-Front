@@ -75,4 +75,23 @@ export const ItemContainerStyled = styled.div`
             background-color: rgba(0, 0, 0, 0.66);
         }
     }
+
+    @media (max-width: 576px) {
+        background-image: url(${props => props.$background});
+        background-size: cover;
+        background-position: center;
+        color: #000;
+        transition: all 0.3s ease-in-out;
+        max-width: 200px;
+        min-width: 200px;
+        height: 120px;
+
+        p{
+            width: 100%;
+            text-align: center;
+            padding: 5px 10px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.66);
+        }
+    }
 `;

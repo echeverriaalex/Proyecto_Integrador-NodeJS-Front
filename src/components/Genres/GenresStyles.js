@@ -1,49 +1,46 @@
 import styled from "styled-components";
+import { themePage } from "../styles/GlobalStyles";
 
 export const GenresContainerStyled = styled.div`
     display: flex;
     width: 100%;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 20px;
+    
+    @media (max-width: 576px) {
+        padding: ${ themePage.dimensions.paddingSection };
+    }
 `;
 
 export const ItemsContainerStyled = styled.div`
-    
-    width: 100%;
-    gap: 5px;
-
-    /*
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    */
-
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-
+    width: 100%;
+    gap: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Ocultar scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 export const ItemContainerStyled = styled.div`
     display: flex;
-    
-    //width: 100%;
-    
-    
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #000;
-
-    max-width: 250px;
     min-width: 250px;
-    height: 150px;
-    
-    border: 1px solid #ffffff;
+    height: 150px;    
+    border: 1px solid #fff;
     border-radius: 10px;
     cursor: pointer;
 
@@ -64,34 +61,22 @@ export const ItemContainerStyled = styled.div`
         background-image: url(${props => props.$background});
         background-size: cover;
         background-position: center;
-        color: #000;
         transition: all 0.3s ease-in-out;
 
         p{
-            width: 100%;
-            text-align: center;
-            padding: 5px 10px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.66);
+            background-color: #000000a8;
         }
     }
 
     @media (max-width: 576px) {
+        min-width: 200px;
+        height: 120px;
         background-image: url(${props => props.$background});
         background-size: cover;
         background-position: center;
-        color: #000;
-        transition: all 0.3s ease-in-out;
-        max-width: 200px;
-        min-width: 200px;
-        height: 120px;
 
         p{
-            width: 100%;
-            text-align: center;
-            padding: 5px 10px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.66);
+            background-color: #000000a8;
         }
     }
 `;

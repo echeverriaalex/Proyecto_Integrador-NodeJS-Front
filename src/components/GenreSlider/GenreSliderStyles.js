@@ -80,35 +80,29 @@ export const PlusTextStyled = styled.h2`
     animation: blink 1.2s linear infinite;
 `;
 
+export const SliderContainerStyled = styled.div`
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const ItemsContainerStyled = styled.div`
     padding: 20px 0px;
     width: 100%;
     display: flex;
     gap: 15px;
-    overflow: hidden;
     overflow-x: auto;
-    scrollbar-width: thin;
     cursor: pointer;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     
-    scrollbar-color: #ffffffff #4d4d4d;
-
+    /* Ocultar scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
     &::-webkit-scrollbar {
-        height: 20px;
+        display: none;
     }
-
-    &::-webkit-scrollbar-track {
-        background: #9ea19dff;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: #f0e68cff;
-        border-radius: 10px;
-        border: 2px solid #c5a806ff;
-    }
-
-    &::-webkit-scrollbar-corner {
-        background: #c5a806ff;
-    }
-
-    //background-color: #c5a806ff;
 `;

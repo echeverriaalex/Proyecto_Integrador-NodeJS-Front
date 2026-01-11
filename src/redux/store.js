@@ -5,19 +5,23 @@ import persistStore from 'redux-persist/es/persistStore';
 import productsReducer from './slice/productsSlice';
 import genresReducer from './slice/genresSlice';
 import menuReducer from './slice/menuSLice';
+import cartReducer from './cart/cartSlice';
 import typeProductShowReducer from './slice/typeProductShowSlice';
+import userReducer from './users/userSlice';
 
 const reducers = combineReducers({
     products: productsReducer,
     genres: genresReducer,
     menu: menuReducer,
     typeProductShow: typeProductShowReducer,
+    cart: cartReducer,
+    user: userReducer,
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['products', 'cart']
+    whitelist: ['products', 'cart', 'user'], // State slices to persist
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers);

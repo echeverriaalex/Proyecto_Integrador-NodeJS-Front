@@ -28,15 +28,19 @@ const RegisterPage = () => {
                     validationSchema={ registerValidationSchema }
                     onSubmit={async (values, actions) => {
                         console.log("Form submitted with values:", values);
+                        
                         const user = await createUser(
                             values.name,
                             values.email,
                             values.password
                         )
 
+                        console.log(user);
+                        
+
                         if(user){
                             console.log("user de la api --> " ,user);
-                            dispatch(setCurrentUser({...user.usuario}))
+                            dispatch(setCurrentUser({...user.user}))
                         }
 
                         actions.resetForm();

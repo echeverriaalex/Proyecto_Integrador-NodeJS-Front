@@ -37,3 +37,25 @@ export const ErrorMessageStyled = styled.p`
     font-family: "Monserrat", sans-serif;
     padding: 0px 5px;
 `;
+
+export const PasswordToggleButton = styled.button`
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #fff;
+    }
+
+    &:active {
+        color: #999;
+    }
+`;

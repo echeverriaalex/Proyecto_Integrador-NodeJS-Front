@@ -19,6 +19,13 @@ export const SearchBarContainerStyled = styled.div`
 
     width: ${({ $expand }) => ($expand ? "260px" : "50px")};
     box-shadow: ${({ $expand }) => ($expand ? "0 4px 12px #0000001f" : "none")};
+
+    @media (max-width: 576px) {
+        width: 100%;
+        padding: 10px 16px;
+
+        width: ${({ $expand }) => ($expand ? "100%" : "100%")};
+    }
 `;
 
 export const SearchIconStyled = styled(CiSearch)`
@@ -32,6 +39,10 @@ export const SearchIconStyled = styled(CiSearch)`
     ${({ $expand }) => $expand && `
         transform: scale(1.05);
     `}
+
+    @media (max-width: 576px) {
+        display: none;
+    }
 `;
 
 export const SearchBarStyled = styled.input`
@@ -48,4 +59,8 @@ export const SearchBarStyled = styled.input`
         transform .35s ease;
 
     transform: ${({ $expand }) => ($expand ? "translateX(0px)" : "translateX(-10px)")};
+
+    @media (max-width: 576px) {
+        width: 100%;
+    }
 `;

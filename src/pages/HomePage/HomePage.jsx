@@ -7,8 +7,8 @@ const HomePage = () => {
         <HomePageWrapper>
             <HeroContainerStyled>
                 <TextHeroContainerStyled>
-                    <h2>Movies, TV Series, Anime and More</h2>
-                    <p>Buy whatever you want and it will be yours in an instant, forever.</p>
+                    <h2 className="text-black">Movies, TV Series, Anime and More</h2>
+                    <p className="text-black">Buy whatever you want and it will be yours in an instant, forever.</p>
                 </TextHeroContainerStyled>
             </HeroContainerStyled>
 

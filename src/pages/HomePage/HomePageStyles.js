@@ -6,12 +6,7 @@ export const HomePageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /*
-  padding: 20px;
-  background-color: #9b680bff;
-  */
-
+  gap: ${ themePage.dimensions.gapPage };
   width: ${ themePage.dimensions.width };
   max-width: ${ themePage.dimensions.maxWidth };
   min-height: ${ themePage.dimensions.minHeight };
@@ -39,7 +34,7 @@ export const TextHeroContainerStyled = styled.div`
   width: 40%;
 
   h2,p{
-    color: #000000ff;
+    //color: #000000ff;
   }
   
   h2{
@@ -68,8 +63,9 @@ export const SectionCardsContainerStyled = styled.div`
   align-items: center;
   width: 100%;
   gap: 20px;
+  padding: ${ themePage.dimensions.paddingSection };
+
   //background-color: #0e6119ff;
-  padding: 20px;
 
   :nth-child(2) {
     //background-color: #294629ff;

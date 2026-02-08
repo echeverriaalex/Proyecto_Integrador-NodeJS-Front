@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { themePage } from "../../components/styles/GlobalStyles";
-import Hero from "../..//assets/hero2.jpg";
 
 export const HomePageWrapper = styled.div`
   display: flex;
@@ -14,16 +13,21 @@ export const HomePageWrapper = styled.div`
 
 export const HeroContainerStyled = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px;
-  padding: 40px;
-  height: 80vh;
-  background-image: url(${Hero});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-opacity: 0.2;
+  /*padding: 50px;*/
+  height: 70vh;
+  position: relative;
+  overflow: visible;
+`;
+
+export const HeroImageStyled = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const TextHeroContainerStyled = styled.div`
@@ -31,28 +35,53 @@ export const TextHeroContainerStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  gap: 20px;
+
+  /*
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 900px);
+  height: auto;
+  */
+
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: linear-gradient(20deg, #180f014d, #858484d3);
+  background: #00000079;
+  text-align: center;
 
   h2,p{
-    //color: #000000ff;
+    color: #fff;
   }
   
   h2{
     font-size: 3rem;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-family: "Unbounded", "Julius Sans One", "Caveat", cursive, "Playfair Display", "Montserrat", sans-serif;
   }
 
   p{
-    font-size: 1.5rem;
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-family: "Besley", "Playfair Display", "Montserrat", sans-serif;
   }
 
   @media (max-width: 576px) {
-    width: 100%;
-    justify-content: unset;
-    align-items: unset;
+    /*background: #000099a8;*/
+    padding: 10px;
+
+    h2{
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-family: "Unbounded", "Julius Sans One", "Caveat", cursive, "Playfair Display", "Montserrat", sans-serif;
+    }
+
+    p{
+      font-size: 1rem;
+      font-family: "Besley", "Playfair Display", "Montserrat", sans-serif;
+    }
   }
 `;
 
@@ -90,14 +119,11 @@ export const CardContainerStyled = styled.div`
   border-radius: 20px;
   height: 500px;
 
-  
-
   @media (max-width: 576px) {
     flex-direction: column;
     padding: 10px;
     height: auto;
   }
-
 `;
 
 export const TextCardStyled = styled.div`

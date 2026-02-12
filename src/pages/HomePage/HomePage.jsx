@@ -12,9 +12,7 @@ const HomePage = () => {
                     <p className="text-black">Buy whatever you want and it will be yours in an instant, forever.</p>
                 </TextHeroContainerStyled>
             </HeroContainerStyled>
-
             <Genres />
-
             <SectionCardsContainerStyled>
                 <CardContainerStyled>
                     <TextCardStyled>

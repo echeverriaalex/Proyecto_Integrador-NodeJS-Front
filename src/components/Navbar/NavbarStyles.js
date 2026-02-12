@@ -44,14 +44,37 @@ export const LogoContainerStyled = styled(NavLink)`
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 100%;
-    min-width: 150px;
-    background-color: #086fd6;
+    //width: 100%;
+    gap: 5px;
     height: 100%;
+    
+    //min-width: 150px;
+    //background-color: #cf08d6;
+    
 
     img{
-        width: 100%;
+        max-width: 100%;
         height: 100%;
+        max-height: 40px;
+    }
+
+    h2{
+        color: #fff;
+    }
+
+    @media (max-width: 576px) {
+        height: 50px;
+
+
+        background-color: #d63808;
+
+
+        img{
+            max-width: 100%;
+            height: 100%;
+            max-height: 40px;
+            //background-color: #d68e08;
+        }
     }
 `;
 

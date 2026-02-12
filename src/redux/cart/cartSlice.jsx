@@ -3,7 +3,7 @@ import { addItemToCart, deleteItemCart, removeItemFromCart, resetShippingCost } 
 
 const INITIAL_STATE = {
     cartItems: [],
-    shippingCost: 0,
+    shippingCost: 1000,
     hidden: true,
 }
 

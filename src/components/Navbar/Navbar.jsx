@@ -3,13 +3,14 @@ import { BlockIconsContainerStyled, ElementsContainerStyled, IconsContainerStyle
 //import Logo from "../../assets/cinespace-logo.png";
 //import Logo from "../../assets/infinity-watch.png";
 //import Logo from "../../assets/infinity-watch2.png";
-import Logo from "../../assets/infinity-watch3.png";
-import ModalMenu from "./ModalMenu/ModalMenu";
+//import Logo from "../../assets/infinity-watch3.png";
+import Logo from "../../assets/Infinity-Symbol.svg";
 
 
+import ModalMenu from "./Modals/ModalMenu";
 import MenuIcon from "./components/MenuIcon/MenuIcon";
 import CartIcon from "./components/CartIcon/CartIcon";
-import ModalCart from "./ModelCart/ModalCart";
+import ModalCart from "./Modals/ModalCart";
 import Button from "../UI/Button/Button";
 import ButtonLink from "../UI/ButtonLink/ButtonLink";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,9 +36,10 @@ const Navbar = () => {
             <MobileContainerStyled>
                 <LogoContainerStyled to="/">
                     <img src={Logo} alt="Logo"/>
+                    <h2>Infinity</h2>
                 </LogoContainerStyled>
                 <IconsContainerStyled>
-                    <MenuIcon />                    
+                    <MenuIcon />
                     <BlockIconsContainerStyled>
                         <CartIcon />
                         {
@@ -69,6 +71,7 @@ const Navbar = () => {
                 </LinksContainerStyled>
                 <ElementsContainerStyled>
                     <SearchBar />
+                    <MenuIcon />
                     <CartIcon />
                     {
                         currentUser ?

@@ -48,7 +48,7 @@ export const TextHeroContainerStyled = styled.div`
 
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 2;
   background: linear-gradient(20deg, #180f014d, #858484d3);
   background: #00000079;
   text-align: center;

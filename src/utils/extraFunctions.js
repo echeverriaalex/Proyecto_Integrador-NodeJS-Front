@@ -25,6 +25,15 @@ export const formatRuntime = (runtime) => {
     return formatted.trim();
 }
 
+export const formatUserName = (username) => {
+    if (username) {
+        const trimmed = username.trim();
+        if (!trimmed) return "";
+        const capitalized = trimmed[0].toUpperCase() + trimmed.slice(1);
+        return capitalized.length > 10 ? capitalized.slice(0, 10) + "..." : capitalized;
+    }
+}
+
 export const formatRating = (rating) => {
     if(rating === undefined || rating === null) return "N/A";
     return rating.toFixed(2);

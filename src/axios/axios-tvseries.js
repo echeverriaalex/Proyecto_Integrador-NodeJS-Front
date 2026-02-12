@@ -53,7 +53,7 @@ export const getTvSeriesGenres = async () => {
     }
 };
 
-export const getTvbyGenrePaginated = async (genres, page) => {
+export const getTvbyGenrePaginated = async (idGenre, page) => {
     try{
         const options = {
             method: 'GET',
@@ -62,7 +62,7 @@ export const getTvbyGenrePaginated = async (genres, page) => {
                 Authorization: `Bearer ${TOKEN}`
             }
         };
-        const response = await axios.get(`${API_URL_TV_PAGES}?with_genres=${genres}&page=${page}`, options);
+        const response = await axios.get(`${API_URL_TV_PAGES}?with_genres=${idGenre}&page=${page}`, options);
         return response.data;
     }
     catch(error){

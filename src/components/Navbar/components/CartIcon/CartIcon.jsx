@@ -1,4 +1,4 @@
-import { toggleMenuHidden } from "../../../../redux/slice/menuSLice";
+import { toggleCartHidden } from "../../../../redux/cart/cartSlice";
 import { CartIconStyled } from "./CartIconStyles";
 import { useDispatch } from "react-redux";
 
@@ -6,8 +6,12 @@ const CartIcon = () => {
     const dispatch = useDispatch();
 
     return (
-        <CartIconStyled onClick={() => dispatch(toggleMenuHidden())}>
-
+        <CartIconStyled onClick={() => {
+                console.log("click");
+                
+                dispatch(toggleCartHidden())}
+            
+            }>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

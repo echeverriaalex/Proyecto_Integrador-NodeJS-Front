@@ -14,15 +14,11 @@ export const GenreContainerStyled = styled.div`
 export const TextContainerStyled = styled.div`
     display: flex;
     gap: 10px;
-    //align-items: center;
-    //justify-content: center;
-    //background-color: #c506c5ff;
 
     h2{
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
         cursor: pointer;
         font-size: 3rem;
 
@@ -104,5 +100,10 @@ export const ItemsContainerStyled = styled.div`
     
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    @media (max-width: 576px) {
+        gap: 5px;
+        padding: 10px 0px;
     }
 `;

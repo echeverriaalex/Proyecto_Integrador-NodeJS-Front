@@ -1,29 +1,41 @@
-import { useEffect } from "react";
-import { GenresContainerStyled, ItemContainerStyled } from "./GenresSectionStyles";
+import { useEffect, useState } from "react";
+import { GenresContainerStyled } from "./GenresSectionStyles";
 import { getMoviesGenres } from "../../../axios/axios-movies";
 import { useNavigate } from "react-router-dom";
 import { isError, isFetching, success} from "../../../redux/slice/genresSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getTvSeriesGenres } from "../../../axios/axios-tvseries";
 
 const GenresSection = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { genresList, isLoading, error} = useSelector((state) => state.genres);
+
+
+    const [moviesGenresList, setMoviesGenresList] = useState([]);
+    const [tvseriesGenresList, setTvseriesGenresList] = useState([]);
+
+    //const { genresList, isLoading, error} = useSelector((state) => state.genres);
 
     const fetchGenresList = async () => {
         try{
             dispatch(isFetching());
-            const genresList = await getMoviesGenres();
+            const moviesGenres = await getMoviesGenres();
+            setMoviesGenresList(moviesGenres);
 
+            const tvseriesGenres = await getTvSeriesGenres();
+            setTvseriesGenresList(tvseriesGenres);
+
+            /*
             if(genresList) {
                 dispatch(success(genresList?.genres));
             }
             else{
                 console.error(`Genre ${genre} not found.`);
             }
+            */
         }catch(error){
             dispatch(isError(error));
-            console.error(`Error loading ${genre} movies.`, error);
+            console.error(`Error loading genres on footer.`, error);
         }
     }
 
@@ -34,13 +46,13 @@ const GenresSection = () => {
     return (
         <GenresContainerStyled>
             {genresList.map((genre) => (
-                <ItemContainerStyled 
+                <ItemFooterContainerStyled 
                     key={genre?.id}
                     //onClick={() => navigate(`/genres/${genre.id}`)}
                     onClick={() => navigate(`/movies/${genre.name}`)}
                 >
                     <p className="font-bold"> {genre?.name} </p>
-                </ItemContainerStyled>
+                </ItemFooterContainerStyled>
             ))}
         </GenresContainerStyled>
     );

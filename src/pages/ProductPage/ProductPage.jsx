@@ -49,46 +49,54 @@ const ProductPage = () => {
     
     return (
         <ProductPageWrapper>
-            <ProductContainerStyled>
-                {
-                /*
-                <img src={details ? `${IMG_URL}${details.backdrop_path}` : null } alt={details?.title} />
-                <img src={details ? `${IMG_URL}${details.belongs_to_collection.poster_path}` : null } alt={details?.title} />
-                <img src={details ? `${IMG_URL}${details.belongs_to_collection.backdrop_path}` : null } alt={details?.title} />
-                */
-                }
-
-                <ImageContainerStyled>
-                    <img src={details ? `${IMG_URL}${details.poster_path}` : null } alt={details.title} />
-                </ImageContainerStyled>
+            {
+                showLoading || !details ? (
+                    <p>Loading...</p>
+            
                 
-                <DetailsContainerStyled>
-                    <h2 className="font-bold text-left text-white">{details.title}</h2>
-                    <DataContainerStyled>                        
-                        <p>{ extractYear(details.release_date) + " - " + formatRuntime(details.runtime) + " - " +  details.genres.map(genre => genre.name).join(", ")}</p>                        
-                        <p>{details.overview}</p>
-                        <p>Rating: { formatRating(details.vote_average)}</p>
-                        <p>Produced in {details.production_countries.map(country => country.name).join(", ")}</p>
-                        <p>Languages: {details.spoken_languages.map(language => language.name).join(", ")}</p>
-                    </DataContainerStyled>
-                    <ContainerProductionsStyled>
+
+                ) :
+                (
+                    <ProductContainerStyled>
                         {
-                            details?.production_companies? (
-                                <ImagesProductionsContainerStyled>
-                                    {
-                                        details.production_companies.map((company) => company.logo_path != null && (
-                                            <ImageProductionStyled key={company.id}>
-                                                <img src={details ? `${IMG_URL}${company.logo_path}` : null } alt={details.title} />
-                                            </ImageProductionStyled>
-                                        ))
-                                    }
-                                </ImagesProductionsContainerStyled>
-                            ) : null
+                        /*
+                        <img src={details ? `${IMG_URL}${details.backdrop_path}` : null } alt={details?.title} />
+                        <img src={details ? `${IMG_URL}${details.belongs_to_collection.poster_path}` : null } alt={details?.title} />
+                        <img src={details ? `${IMG_URL}${details.belongs_to_collection.backdrop_path}` : null } alt={details?.title} />
+                        */
                         }
-                        <p>Production Companies: {details.production_companies.map(company => company.name).join(", ")}</p>
-                    </ContainerProductionsStyled>
-                </DetailsContainerStyled>
-            </ProductContainerStyled>
+                        <ImageContainerStyled>
+                            <img src={details ? `${IMG_URL}${details.poster_path}` : null } alt={details.title} />
+                        </ImageContainerStyled>
+                        <DetailsContainerStyled>
+                            <h2 className="font-bold text-left text-white">{details.title}</h2>
+                            <DataContainerStyled>                        
+                                <p>{ extractYear(details.release_date) + " - " + formatRuntime(details.runtime) + " - " +  details.genres.map(genre => genre.name).join(", ")}</p>                        
+                                <p>{details.overview}</p>
+                                <p>Rating: { formatRating(details.vote_average)}</p>
+                                <p>Produced in {details.production_countries.map(country => country.name).join(", ")}</p>
+                                <p>Languages: {details.spoken_languages.map(language => language.name).join(", ")}</p>
+                            </DataContainerStyled>
+                            <ContainerProductionsStyled>
+                                {
+                                    details?.production_companies? (
+                                        <ImagesProductionsContainerStyled>
+                                            {
+                                                details.production_companies.map((company) => company.logo_path != null && (
+                                                    <ImageProductionStyled key={company.id}>
+                                                        <img src={details ? `${IMG_URL}${company.logo_path}` : null } alt={details.title} />
+                                                    </ImageProductionStyled>
+                                                ))
+                                            }
+                                        </ImagesProductionsContainerStyled>
+                                    ) : null
+                                }
+                                <p>Production Companies: {details.production_companies.map(company => company.name).join(", ")}</p>
+                            </ContainerProductionsStyled>
+                        </DetailsContainerStyled>
+                    </ProductContainerStyled>
+                )
+            }
         </ProductPageWrapper>
     );
 };

@@ -25,6 +25,7 @@ const Genres = () => {
             dispatch(isFetching());
             const fecthGenresProduct  = selectFetchGenreByType(typeProduct);
             const genresData = await fecthGenresProduct();
+            console.log("Estoy en Genres fetched:", genresData);
             dispatch(success(genresData.genres));
             return genresData;
         }catch(error){
@@ -88,9 +89,13 @@ const Genres = () => {
                             $background={WallpaperGenres[genre.name]}
                             onClick={
                                 typeProduct === "tvseries" ? 
-                                    () => navigate(`/tvseries/${genre.name}`) 
+                                    () => navigate(`/tvseries/${genre.name}`, {
+                                        state: { idGenre: genre.id, genre: genre.name, category: "tvseries" }
+                                    })
                                     :
-                                    () => navigate(`/movies/${genre.name}`)
+                                    () => navigate(`/movies/${genre.name}`, {
+                                        state: { idGenre: genre.id, genre: genre.name, category: "movies" }
+                                    })
                             }
                         >
                             <p className="font-bold text-xl">{genre.name}</p>

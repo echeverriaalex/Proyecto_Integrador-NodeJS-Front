@@ -74,9 +74,9 @@ const GenresSlider = ({genre, itemsList, category}) => {
             <TextContainerStyled
                 onClick={ handleClick }
             >
-                <h2 className="text-white font-bold text-xl cursor-pointer"> { genre?.name }  </h2>
+                <h2 className="font-bold text-xl cursor-pointer"> { genre?.name }  </h2>
                 <PlusTextStyled className="text-white font-bold text-xl cursor-pointer"> + </PlusTextStyled>
-                <p className="text-white font-bold text-xl cursor-pointer"> Explore </p>
+                <p className="font-bold text-xl cursor-pointer"> Explore </p>
             </TextContainerStyled>
 
             <SliderContainerStyled>

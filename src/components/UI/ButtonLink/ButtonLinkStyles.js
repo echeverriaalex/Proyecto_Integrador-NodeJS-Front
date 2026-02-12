@@ -14,7 +14,7 @@ export const ButtonLinkContainerStyled = styled(NavLink)`
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 8px 40px;
-    width: 150px;
+    width: 130px;
     background-color: ${(props) => props.$bgColor || '#a51c60ff'};
     color: ${(props) => props.color || 'white'};
     font-size: ${(props) => props.fontSize || '1rem'};
@@ -23,7 +23,7 @@ export const ButtonLinkContainerStyled = styled(NavLink)`
     &:hover {
         color: #fff;
         //text-decoration: underline;
-        border: 3px dotted #fff;
+        border: 2px dotted #fff;
     }
 
     &:disabled {

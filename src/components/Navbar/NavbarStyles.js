@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { themePage } from "../styles/GlobalStyles";
 
 export const NavbarWrapper = styled.nav`
     display: flex;
@@ -8,15 +9,13 @@ export const NavbarWrapper = styled.nav`
     width: 100%;
     gap: 30px;
     background-color: #041b41ff;
-
     padding: 10px 30px;
-
-    background-color: #1C1C1E;
-
+    background-color: ${themePage.colors.bgGray};
+    
     @media (max-width: 576px) {
         flex-direction: column;
         gap: 15px;
-        padding: 0px;
+        padding: 10px;
     }
 `;
 
@@ -29,9 +28,9 @@ export const MainNavbarWrapper = styled.nav`
     gap: 30px;
     padding: 10px 30px;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1200px) {
         padding: 10px;
-        //background-color: #066416ff;
+        background-color: #066416ff;
     }
 
     @media (max-width: 576px) {
@@ -46,12 +45,13 @@ export const LogoContainerStyled = styled(NavLink)`
     align-items: center;
     justify-content: center;
     max-width: 100%;
+    min-width: 150px;
+    background-color: #086fd6;
     height: 100%;
 
     img{
         width: 100%;
         height: 100%;
-        max-height: 60px;
     }
 `;
 
@@ -85,16 +85,67 @@ export const LinkContainerStyled = styled(NavLink)`
     }
 `;
 
+export const ElementsContainerStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    max-height: 70px;
+    padding: 0 5px;
+    min-width: 400px;
+
+    background-color: #1cc42aff;
+`;
+
+export const UserContainerStyled = styled.div`
+    
+    cursor: pointer;
+
+    width: 200px;
+    height: 50px;
+
+    background-color: #8fc70cb7;
+
+    p{
+        font-size: 20px;
+        color: #fff;
+    }
+
+    &:hover {
+        color: #ffcc00ff;
+    }
+`;
+
+export const UserContainerSessionStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 200px;
+    /*
+    background-color: #c10cc7b7;
+    */
+
+    
+    p{
+        font-size: 20px;
+        color: #fff;
+        width: 100px;
+        text-align: center;
+    }
+
+
+    /*width: 200px;*/
+`;
+
 // Mobile Styles
 export const MobileContainerStyled = styled.div`
     display: none;
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    height: 150px;
-    padding: 5px;
-
-    //background-color: #37d410ff;
 
     @media (max-width: 576px) {
         display: flex;
@@ -103,16 +154,25 @@ export const MobileContainerStyled = styled.div`
 
 export const IconsContainerStyled = styled.div`
     display: flex;
-    width: 100%;
+    //width: 100%;
     height: 100%;
     max-height: 70px;
-    padding: 5px;
     align-items: center;
+    padding: 0 5px;
     justify-content: space-between;
 
-    //background-color: #5c6606ff;
+    /*
+    background-color: #1cc42aff;
 
     @media (max-width: 576px) {
         display: flex;
     }
+    */
+`;
+
+export const BlockIconsContainerStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 `;

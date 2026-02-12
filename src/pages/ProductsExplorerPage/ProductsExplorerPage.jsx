@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { isError, isFetching, success } from "../../redux/slice/productsSlice";
 import { isError as isErrorGenres, isFetching as isFetchingGenres, success as successGenres } from "../../redux/slice/genresSlice";
 import { setTypeProductShow } from "../../redux/slice/typeProductShowSlice";
-import { GenresListContainerStyled, ProductsExplorerPageWrapper } from "./ProductsExplorerPageStyles";
+import { GenresListContainerStyled, HeroContainerStyled, ProductsExplorerPageWrapper } from "./ProductsExplorerPageStyles";
 import { selectFetchGenreByType, selectFetchGenreProductsByTypePaginated } from "../../utils/extraFunctions";
 import GenresSlider from "../../components/GenreSlider/GenreSlider";
 import Genres from "../../components/Genres/Genres";
 import GenresSliderSkeleton from "../../components/GenreSlider/GenreSliderSkeleton";
+import tvseries from "../../assets/wallpaper-tvseries.jpg";
+import movies from "../../assets/wallpaper-movies.jpeg";
 
 const ProductsExplorerPage = () => {
   
@@ -42,7 +44,6 @@ const ProductsExplorerPage = () => {
       console.error(`Error loading genres.`, error);
     }
   }
-
 
   const fetchProductsAndGenres = async () => {
     const genresListProduct = await fetchGenresList();
@@ -83,9 +84,11 @@ const ProductsExplorerPage = () => {
 
   return (
     <ProductsExplorerPageWrapper>
-      <h1 className="font-bold text-center text-white">
-        {categoryProduct === "tvseries" ? "TV & Series" : "Movies"}
-      </h1>
+      <HeroContainerStyled $wallpaper={categoryProduct === "tvseries" ? tvseries : movies}>
+        <h1 className="font-bold text-center text-white">
+          {categoryProduct === "tvseries" ? "TV & Series" : "Movies"}
+        </h1>
+      </HeroContainerStyled>
       <Genres />
       <GenresListContainerStyled>
         {showLoading ? (

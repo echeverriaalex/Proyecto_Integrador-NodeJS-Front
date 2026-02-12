@@ -26,9 +26,13 @@ const GenrePage = () => {
             dispatch(isFetching());
             const fetchGenreProductsFunction = selectFetchGenreProductsByTypePaginated(category);
             const productsData = await fetchGenreProductsFunction(idGenre, currentPage);
-            console.log(productsData.results);
-            dispatch(success(productsData.results));
-            return productsData.results;
+            console.log("En una pagina de un genero");
+
+            console.log(productsData);
+            
+            console.log(productsData?.results);
+            dispatch(success(productsData?.results));
+            return productsData?.results;
         }catch(error){
             dispatch(isError(error));
             console.error(`Error loading ${genreName} products. `, error);

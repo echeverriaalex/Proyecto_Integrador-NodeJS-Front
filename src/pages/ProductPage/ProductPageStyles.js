@@ -7,9 +7,6 @@ export const ProductPageWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    
-    //background-color: #f5f5f5;
-
     width: ${ themePage.dimensions.width };
     max-width: ${ themePage.dimensions.maxWidth };
     min-height: ${ themePage.dimensions.minHeight };
@@ -20,9 +17,12 @@ export const ProductContainerStyled = styled.div`
     align-items: stretch;
     justify-content: center;
     gap: 10px;
+    
+    padding: 10px;
 
-    background-color: #bb0e0eff;
-
+    //min-height: ${ themePage.dimensions.minHeight };
+    // //background-color: #bb0e0eff;
+    min-height: 40vh;
 
 
     @keyframes fadeIn {
@@ -47,16 +47,19 @@ export const ProductContainerStyled = styled.div`
 
 export const ImageContainerStyled = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    //width: 50%;
+    min-height: 100%;
 
-    //min-width: 500px;
-    width: 50%;
-    max-width: 500px;
+    //max-width: 500px;
     border-radius: 10px;
+    //padding: 10px;
+    //background-color: #7fa007ff;
 
     img{
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
         border-radius: 10px;
     }
 
@@ -67,16 +70,13 @@ export const ImageContainerStyled = styled.div`
 
 export const DetailsContainerStyled = styled.div`
     width: 50%;
-    display: flex;
-    
+    display: flex;    
     flex-direction: column;
     align-items: space-between;
     justify-content: space-between;
     padding: 5px;
-
     background-color: #094369ff;
     border-radius: 10px;
-
     padding: 30px 20px;
 
     h2,p{

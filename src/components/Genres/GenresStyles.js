@@ -30,6 +30,11 @@ export const ItemsContainerStyled = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
+
+    @media (max-width: 576px) {
+        gap: 5px;
+        //padding: 10px 0px;
+    }
 `;
 
 export const ItemContainerStyled = styled.div`

@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ContainerStyled, LinkContainerStyled, LinksContainerStyled, ModalOverLayStyled } from './ModalMenuStyles';
+import { ContainerStyled, HeadContainerStyled, LinkContainerStyled, LinksContainerStyled, ModalOverLayStyled } from './ModalsStyles';
 import { toggleMenuHidden } from '../../../redux/slice/menuSLice';
 import { AnimatePresence } from 'framer-motion';
+import Button from '../../UI/Button/Button';
 
 const ModalMenu = () => {
 
@@ -27,7 +28,14 @@ const ModalMenu = () => {
                         transition={{ type: "spring", damping: 27 }}
                         key="menu-modal"
                     >
-                        <h2 className="text-2xl">Menu</h2>
+                        <HeadContainerStyled>
+                            <h2 className="text-2xl">Menu</h2>
+                            <Button
+                                onClick={() => dispatch(toggleMenuHidden())}
+                                isHidden={hiddenMenu}
+                                bgColor="#420000"
+                            >Close X</Button>
+                        </HeadContainerStyled>
                         <LinksContainerStyled onClick={() => dispatch(toggleMenuHidden())}>
                             <LinkContainerStyled to="/">Home</LinkContainerStyled>
                             <LinkContainerStyled to="/tvseries">Tv & Series</LinkContainerStyled>

@@ -42,3 +42,22 @@ export const ContainerStyled = styled(motion.div)`
         height: 100vh;
     }
 `;
+
+export const LinksContainerStyled = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+`;
+
+export const LinkContainerStyled = styled((NavLink))`
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 10px;
+    //overflow-wrap: break-word;
+`;
+
+export const HeadContainerStyled = styled(motion.div)`
+    display: flex;
+    justify-content: space-between;
+    //gap: 20px;
+`;

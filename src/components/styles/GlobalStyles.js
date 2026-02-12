@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-
     :root{
         --bg-gradient: linear-gradient(to left,rgb(206, 127, 175), #b39fc2, #4c5187);
         --bg-dark: #171718;
@@ -47,6 +46,8 @@ export const themePage = {
         marginTopMobile: '140px',
         width: '100%',
         minHeight: '90vh',
+        paddingSection: '5px',
+        gapPage: '20px',
     },
 
     colors: {
@@ -54,10 +55,12 @@ export const themePage = {
         bgRed: '#bb2106',
         bgDark: '#171718',
         bgBlack: '#000',
+        bgGray: '#101011ff',
         bgGradient: 'linear-gradient(to left,rgb(206, 127, 175), #b39fc2, #4c5187)',
     },
 
     fonts: {
         montserrat: 'Montserrat, sans-serif',
+        fontSize: '1rem',
     }
 };

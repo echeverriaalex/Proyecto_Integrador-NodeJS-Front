@@ -2,11 +2,11 @@ import InputContainer from "../../components/UI/InputContainer/InputContainer"
 import { Form, FormContainerStyled, HeaderStyled, LoginPageWrapper, RegisterWrapper } from "./LoginPageStyles";
 import{ Formik } from "formik";
 import { NavLink } from "react-router-dom";
-//import useRedirect from "../../hooks/useRedirect";
+import useRedirect from "../../hooks/useRedirect";
 import { useDispatch } from "react-redux";
 import { loginInitialValues } from "../../formik/initialValue";
 import { loginValidationSchema } from "../../formik/validationSchema";
-//import { loginUser } from "../../axios/axios-users";
+import { loginUser } from "../../axios/axios-users";
 import { setCurrentUser } from "../../redux/users/userSlice";
 import Button from "../../components/UI/Button/Button";
 import { useState } from "react";
@@ -17,6 +17,7 @@ const LoginPage = () => {
     const [isFetching, setIsFetching] = useState(false);
     //useRedirect("/profile");
     //useRedirect("/mypurchases");
+    useRedirect("/");
 
     return(
         <LoginPageWrapper>
@@ -28,17 +29,20 @@ const LoginPage = () => {
                     initialValues={ loginInitialValues }
                     validationSchema={ loginValidationSchema }
                     onSubmit={async (values) => {
-                        const user = await loginUser(values.email, values.password)                        
+                        setIsFetching(true);
+                        const user = await loginUser(values.email, values.password)
+                        console.log("Datos user: ", user);
                         dispatch(setCurrentUser({
-                            ...user.usuario,
+                            ...user.user,
                             token: user.token
                         }))
+                        setIsFetching(false);
                     }}
                 >
                     <Form>
                         <InputContainer name="email" type="email" placeholder="Email" />
                         <InputContainer name="password" type="password" placeholder="Password" />
-                        <Button> 
+                        <Button type="submit" disabled={isFetching}> 
                             Login
                         </Button>
                     </Form>

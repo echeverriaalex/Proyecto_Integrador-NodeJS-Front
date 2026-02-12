@@ -9,11 +9,14 @@ import { useDispatch } from "react-redux";
 import { ButtonStyled } from "../../components/UI/Button/ButtonStyles";
 import { setCurrentUser } from "../../redux/users/userSlice";
 import useRedirect from "../../hooks/useRedirect";
+import Button from "../../components/UI/Button/Button";
+import { useState } from "react";
 //import { ButtonStyled } from "../../components/UI/Button/ButtonStyled";
 
 const RegisterPage = () => {
 
     const dispatch = useDispatch();
+    const [isFetching, setIsFetching] = useState(false);
     useRedirect("/");
 
     return(
@@ -27,6 +30,7 @@ const RegisterPage = () => {
                     initialValues={ registerInitialValues }
                     validationSchema={ registerValidationSchema }
                     onSubmit={async (values, actions) => {
+                        setIsFetching(true);
                         console.log("Form submitted with values:", values);
                         
                         const user = await createUser(
@@ -43,14 +47,17 @@ const RegisterPage = () => {
                             dispatch(setCurrentUser({...user.user}))
                         }
 
+                        setIsFetching(false);
                         actions.resetForm();
                     }}
                 >   
                     <Form>
                         <InputContainer name='name' type="text" placeholder="Name" />
                         <InputContainer name='email' type="email" placeholder="Email" />
-                        <InputContainer name='password' type="password" placeholder="Password" />
-                        <ButtonStyled type="submit">Register</ButtonStyled>
+                        <InputContainer name='password' type="password" placeholder="Password" />                        
+                        <Button type="submit" disabled={isFetching}> 
+                            Register
+                        </Button>
                     </Form>
                 </Formik>
                 <LoginWrapper>                    

@@ -30,7 +30,7 @@ export const ContainerContentStyled = styled.div`
     flex: 1;
     align-self: stretch;
 
-    background: #ccda0c;
+    background: #505050;
     padding: 50px;
     overflow: hidden;
 `;

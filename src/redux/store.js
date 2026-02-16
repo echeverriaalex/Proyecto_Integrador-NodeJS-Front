@@ -8,6 +8,8 @@ import menuReducer from './slice/menuSLice';
 import cartReducer from './cart/cartSlice';
 import typeProductShowReducer from './slice/typeProductShowSlice';
 import userReducer from './users/userSlice';
+import orderReducer from './orders/orderSlice';
+import messageSlice from './message/messageSlice';
 
 const reducers = combineReducers({
     products: productsReducer,
@@ -16,12 +18,14 @@ const reducers = combineReducers({
     typeProductShow: typeProductShowReducer,
     cart: cartReducer,
     user: userReducer,
+    orders: orderReducer,
+    message: messageSlice
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['products', 'cart', 'user'], // State slices to persist
+    whitelist: ['products', 'cart', 'user', 'orders'], // State slices to persist
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers);

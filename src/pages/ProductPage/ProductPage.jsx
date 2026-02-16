@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
-import { ContainerProductionsStyled, DataContainerStyled, DetailsContainerStyled, ImageContainerStyled, ImageProductionStyled, ImagesProductionsContainerStyled, ProductContainerStyled, ProductPageWrapper } from "./ProductPageStyles";
+import { BuyContainerStyled, ContainerProductionsStyled, DataContainerStyled, DetailsContainerStyled, ImageContainerStyled, ImageProductionStyled, ImagesProductionsContainerStyled, ProductContainerStyled, ProductPageWrapper } from "./ProductPageStyles";
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../../utils/constants";
 import { extractYear, formatRating, formatRuntime, selectFetchDetailsProductsByType } from "../../utils/extraFunctions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader/Loader";
+import Button from "@mui/material/Button";
+import { ButtonStyled } from "../../components/UI/Button/ButtonStyles";
+import { addToCart } from "../../redux/cart/cartSlice";
+import { toggleMessageShow } from "../../redux/message/messageSlice";
+import { capitalizeText } from "../../utils/functions";
 
 const ProductPage = () => {
 
+    const dispatch = useDispatch();
     const [details, setDetails] = useState(null);
     const { id } = useParams();
     const [showLoading, setShowLoading] = useState(true);
     const { typeProduct } = useSelector((state) => state.typeProductShow);
+
+    const price = 9.99 * (details?.production_companies?.length || 9.99);
+
+
+    console.log(details);
+    
 
     const fetchProductDetails = async() => {
         try {
@@ -37,6 +50,7 @@ const ProductPage = () => {
         return () => clearTimeout(timer);
     }, [id]);
 
+    /*
     if(showLoading || !details) {
         return(
             <ProductPageWrapper>
@@ -46,15 +60,17 @@ const ProductPage = () => {
             </ProductPageWrapper>
         );
     }
+    */
     
     return (
         <ProductPageWrapper>
             {
                 showLoading || !details ? (
-                    <p>Loading...</p>
-            
-                
-
+                    <>
+                        <Loader 
+                            message="Please wait a moment."
+                        />
+                    </>
                 ) :
                 (
                     <ProductContainerStyled>
@@ -92,6 +108,27 @@ const ProductPage = () => {
                                     ) : null
                                 }
                                 <p>Production Companies: {details.production_companies.map(company => company.name).join(", ")}</p>
+
+
+                                <BuyContainerStyled>
+                                    <h2> $ {price} </h2>
+                                    <ButtonStyled
+                                        width="180px"
+                                        onClick={()=> {
+                                            console.log("Adding item to cart:", details);
+                                            dispatch(addToCart({
+                                                id: details.id,
+                                                title: details.name,
+                                                img: `${IMG_URL}${details.poster_path}`,
+                                                price: price,
+                                                poster: details.poster_path
+                                            })),
+                                            dispatch(toggleMessageShow(`${capitalizeText( details?.title)} added to cart`))
+                                        }}
+                                    >
+                                        Add to cart
+                                    </ButtonStyled>
+                                </BuyContainerStyled>
                             </ContainerProductionsStyled>
                         </DetailsContainerStyled>
                     </ProductContainerStyled>

@@ -6,6 +6,8 @@ export const InputContainerStyled = styled.div`
     flex-direction: column;
     gap: 8px;
     max-width: 350px;
+    border-radius: 10px;
+    border: 1px solid #c4c4c4;
 `;
 
 export const InputStyled = styled.input`

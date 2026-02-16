@@ -19,7 +19,7 @@ const GenresSlider = ({genre, itemsList, category}) => {
 
     const handleClick = () => {
         navigate(`/${url}/${genre.name}`, {
-            state: { idGenre: genre.id, genre: genre?.name, category: category }
+            state: { idGenre: genre.id, genre: genre?.name, category }
         });
     };
 

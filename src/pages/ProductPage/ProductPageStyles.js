@@ -114,12 +114,39 @@ export const ContainerProductionsStyled = styled.div`
     padding: 50px 0px;
 `;
 
+export const BuyContainerStyled = styled.div`
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    //flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    //background-color: rgb(115, 173, 6);
+
+    h2{
+        width: unset;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        //background-color: #d3d4d6;
+    }
+`;
+
+
+
+
 export const ImagesProductionsContainerStyled = styled.div`
     display: flex;
     align-items: center;
     gap: 20px;
     width: 100%;
     flex-wrap: wrap;
+
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
 `;
 
 export const ImageProductionStyled = styled.div`

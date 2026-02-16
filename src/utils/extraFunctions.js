@@ -27,10 +27,9 @@ export const formatRuntime = (runtime) => {
 
 export const formatUserName = (username) => {
     if (username) {
-        const trimmed = username.trim();
-        if (!trimmed) return "";
-        const capitalized = trimmed[0].toUpperCase() + trimmed.slice(1);
-        return capitalized.length > 10 ? capitalized.slice(0, 10) + "..." : capitalized;
+        let name = username.trim().split(" ")[0]; // Obtener el primer nombre
+        name = name.charAt(0).toUpperCase() + name.slice(1); // Capitalizar la primera letra
+        return name.length > 10 ? name.slice(0, 10) + "..." : name;
     }
 }
 

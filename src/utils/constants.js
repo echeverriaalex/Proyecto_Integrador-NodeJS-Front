@@ -18,6 +18,7 @@ export const IMG_URL = "https://image.tmdb.org/t/p/w500";
 export const API_URL_MOVIES_GENRES = "https://api.themoviedb.org/3/genre/movie/list";
 export const API_URL_TV_GENRES = "https://api.themoviedb.org/3/genre/tv/list";
 
+export const SHIPPING_COST = 1000;
 
 export const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMmQyOTEyNTYyODIyNDI0NjQ4MjQxZWQyOGEwZjc4NSIsIm5iZiI6MTYwMTkyNjU2MS4wMDgsInN1YiI6IjVmN2I3NWExZTAzOWYxMDAzN2YzNTliNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F2yL4wX1lo5KmGhSJxzH2WK7DNtPhKjH1lDQ5PkIV_g";
 //export const BASE_URL = "https://proyecto-integrador-nodejs-back.onrender.com"; // reemplazar por url de deploy

@@ -10,6 +10,7 @@ import { loginUser } from "../../axios/axios-users";
 import { setCurrentUser } from "../../redux/users/userSlice";
 import Button from "../../components/UI/Button/Button";
 import { useState } from "react";
+import Loader from "../../components/Loader/Loader";
 
 const LoginPage = () => {
 
@@ -45,6 +46,10 @@ const LoginPage = () => {
                         <Button type="submit" disabled={isFetching}> 
                             Login
                         </Button>
+
+                        {
+                            isFetching && <Loader />
+                        }
                     </Form>
                 </Formik>
                 <RegisterWrapper>

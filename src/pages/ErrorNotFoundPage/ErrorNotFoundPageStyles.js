@@ -17,6 +17,16 @@ export const ErrorPageWrapper = styled.div`
     padding: 20px;
     background: #d60d0d;
     */
+
+    @media (max-width: 1000px){
+        padding: 10px;
+    }
+
+    @media (max-width: 576px) {
+        //margin-top: ${ themePage.dimensions.marginTopMobile };
+        padding: 10px;
+        gap: 15px;
+    }
 `;
 
 export const ContainerContentStyled = styled.div`

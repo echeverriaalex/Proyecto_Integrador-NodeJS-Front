@@ -1,10 +1,12 @@
 import SearchBar from "../UI/SearchBar/SearchBar";
-import { BlockIconsContainerStyled, ElementsContainerStyled, IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper, UserContainerSessionStyled, UserContainerStyled } from "./NavbarStyles";
+import { BlockIconsContainerStyled, ElementsContainerStyled, IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper, UserContainerSessionStyled } from "./NavbarStyles";
 //import Logo from "../../assets/cinespace-logo.png";
 //import Logo from "../../assets/infinity-watch.png";
 //import Logo from "../../assets/infinity-watch2.png";
 //import Logo from "../../assets/infinity-watch3.png";
 import Logo from "../../assets/Infinity-Symbol.svg";
+
+//import { User } from 'lucide-react';
 
 
 import ModalMenu from "./Modals/ModalMenu";
@@ -41,13 +43,29 @@ const Navbar = () => {
                 <IconsContainerStyled>
                     <MenuIcon />
                     <BlockIconsContainerStyled>
-                        <CartIcon />
                         {
                             currentUser ?
-                                <UserContainerStyled>
+                                <>
+                                    <UserContainerSessionStyled>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
+                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="12" cy="7" r="4"/>
+                                        </svg>
+                                        <p>{ formatUserName(currentUser?.name) }</p>
+                                    </UserContainerSessionStyled>
+                                    
+                                </>
+                                : <ButtonLink route="/login" $bgColor="#464646ff">Login</ButtonLink>
+                        }
+                        <CartIcon />
+                        {
+                            /*
+                            currentUser ?
+                                <UserContainerSessionStyled>
                                     <p>{ formatUserName(currentUser?.name) }</p>
-                                </UserContainerStyled> 
+                                </UserContainerSessionStyled> 
                                 : <LinkContainerStyled to="/login">LogIn</LinkContainerStyled>
+                                */
                         }
                     </BlockIconsContainerStyled>
                 </IconsContainerStyled>
@@ -58,6 +76,7 @@ const Navbar = () => {
             <MainNavbarWrapper>
                 <LogoContainerStyled to="/">
                     <img src={Logo} alt="Logo"/>
+                    <h2>Infinity</h2>
                 </LogoContainerStyled>
                 <LinksContainerStyled>
                     <LinkContainerStyled to="/">Home</LinkContainerStyled>
@@ -75,14 +94,22 @@ const Navbar = () => {
                     <CartIcon />
                     {
                         currentUser ?
-                            <UserContainerSessionStyled>
-                                <p>{ formatUserName(currentUser?.name) }</p>
+                            <>
+                                <UserContainerSessionStyled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    <p>{ formatUserName(currentUser?.name) }</p>
+                                </UserContainerSessionStyled>
                                 <Button onClick={()=>{
                                     dispatch(setCurrentUser(null));
                                         navigate("/");
                                     }}
-                                >Logout</Button>
-                            </UserContainerSessionStyled>
+                                >
+                                    Logout
+                                </Button>
+                            </>
                             : <ButtonLink route="/login" $bgColor="#464646ff">Login</ButtonLink>
                     }
                 </ElementsContainerStyled>

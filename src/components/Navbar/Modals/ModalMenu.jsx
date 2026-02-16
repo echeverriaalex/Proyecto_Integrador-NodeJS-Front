@@ -3,11 +3,15 @@ import { ContainerStyled, HeadContainerStyled, LinkContainerStyled, LinksContain
 import { toggleMenuHidden } from '../../../redux/slice/menuSLice';
 import { AnimatePresence } from 'framer-motion';
 import Button from '../../UI/Button/Button';
+import { setCurrentUser } from '../../../redux/users/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const ModalMenu = () => {
 
     const dispatch = useDispatch();
     const hiddenMenu = useSelector((state) => state.menu.hidden);
+    const navigate = useNavigate();
+    const { currentUser } = useSelector(state => state.user);
 
     return (
         <>
@@ -43,6 +47,18 @@ const ModalMenu = () => {
                             <LinkContainerStyled to="/mylist">MyList</LinkContainerStyled>
                             <LinkContainerStyled to="/about">About</LinkContainerStyled>
                             <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
+                            {
+                                currentUser ?
+                                    <LinkContainerStyled onClick={()=>{
+                                        dispatch(setCurrentUser(null));
+                                            navigate("/");
+                                        }}
+                                    >
+                                        Logout
+                                    </LinkContainerStyled>
+                                    :
+                                    <LinkContainerStyled to="/login">Login</LinkContainerStyled>
+                            }
                         </LinksContainerStyled>
                     </ContainerStyled>
                 )}

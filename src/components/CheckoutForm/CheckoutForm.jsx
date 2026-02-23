@@ -23,16 +23,16 @@ const CheckoutForm = ({ cartItems, price, shippingCost }) => {
         validationSchema={checkoutValidationSchema}
         onSubmit={async (values) => {
           const orderData = {
-            price,
-            shippingCost,
-            total: price + shippingCost,
-            shippingDetails: { ...values },
             items: cartItems,
+            shippingDetails: { ...values },
+            shippingCost,
+            //total: price + shippingCost,
+            //price,
           }
           try {
             await createOrder(dispatch, orderData, currentUser)
             navigate('/successful')
-            alert('Order created successfully')
+           // alert('Order created successfully')
             dispatch(clearCart())
           } catch (error) {
             alert('Error al crear la orden')
@@ -47,9 +47,10 @@ const CheckoutForm = ({ cartItems, price, shippingCost }) => {
               <InputContainer name='location' htmlFor="localidad" type="text" id="localidad" placeholder="Locality" />
               <InputContainer name='address' htmlFor="direccion" type="text" id="direccion" placeholder="Address" />
               <div>
-                <Button disabled={!cartItems.length}>
-                  {isSubmitting ? <Loader/> : 'Start Order'}
+                <Button disabled={!cartItems.length || isSubmitting} type="submit">
+                  Start Order
                 </Button>
+                { isSubmitting && <Loader /> }
               </div>
             </Form>
           )

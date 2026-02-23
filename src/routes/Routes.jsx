@@ -10,13 +10,14 @@ import MyPurchasesPage from "../pages/MyPurchasesPage/MyPurchasesPage";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import MyCartPage from "../pages//MyCartPage/MyCartPage";
 import ErrorNotFoundPage from "../pages/ErrorNotFoundPage/ErrorNotFoundPage";
+import SuccessfulPage from "../pages/SuccessfulPage/SuccessfulPage";
 
 function Router() {
   return (
     <ReactDomRoutes>
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
-      <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/:type/product/:id" element={<ProductPage />} />
       <Route path="/tvseries" element={<ProductsExplorerPage />} />
       <Route path="/tvseries/:genre" element={<GenrePage />} />
       <Route path="/movies" element={<ProductsExplorerPage />} />
@@ -32,7 +33,7 @@ function Router() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<CardPage />} />
-        <Route path="/successful" element={<SuccessfulPage />} />
+        
         <Route path="/pagecategory/:category" element={<CategoryPage />} />
         <Route path="/orderdetails/:id" element={<OrderDetailsPage />} />
         */
@@ -50,6 +51,15 @@ function Router() {
         element={
           <ProtectedRoute redirectTo={'/login'}>
             <MyCartPage />
+          </ProtectedRoute>
+        }
+      />
+      
+      <Route 
+        path="/successful" 
+        element={
+          <ProtectedRoute redirectTo={'/login'}>
+            <SuccessfulPage />
           </ProtectedRoute>
         }
       />

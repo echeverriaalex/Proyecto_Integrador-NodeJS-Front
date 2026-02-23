@@ -5,7 +5,7 @@ import { createOrderFail, fetchOrderFail, fetchOrderStart, fetchOrderSuccess } f
 export const getOrders = async (dispatch, currentUser) => {
   dispatch(fetchOrderStart());
   try {
-    const orders = await axios.get(`${BASE_URL}/orders`, {
+    const orders = await axios.get(`${BASE_URL}/orders/mypurchases`, {
       headers: {
         "x-token": currentUser.token,
       },
@@ -29,7 +29,7 @@ export const createOrder = async (dispatch, order, currentUser) => {
   console.log("En crear orden", order);
   
   try {
-    const response = await axios.post(`${BASE_URL}/orders`, order, {
+    const response = await axios.post(`${BASE_URL}/orders/create`, order, {
       headers: {
         "x-token": currentUser.token,
       },

@@ -5,7 +5,6 @@ import { IMG_URL } from "../../utils/constants";
 import { extractYear, formatRating, formatRuntime, selectFetchDetailsProductsByType } from "../../utils/extraFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import Button from "@mui/material/Button";
 import { ButtonStyled } from "../../components/UI/Button/ButtonStyles";
 import { addToCart } from "../../redux/cart/cartSlice";
 import { toggleMessageShow } from "../../redux/message/messageSlice";
@@ -49,28 +48,14 @@ const ProductPage = () => {
 
         return () => clearTimeout(timer);
     }, [id]);
-
-    /*
-    if(showLoading || !details) {
-        return(
-            <ProductPageWrapper>
-                <ProductContainerStyled>
-                    Loading...
-                </ProductContainerStyled>
-            </ProductPageWrapper>
-        );
-    }
-    */
     
     return (
         <ProductPageWrapper>
             {
                 showLoading || !details ? (
-                    <>
-                        <Loader 
-                            message="Please wait a moment."
-                        />
-                    </>
+                    <Loader 
+                        message="Please wait a moment."
+                    />
                 ) :
                 (
                     <ProductContainerStyled>
@@ -85,51 +70,48 @@ const ProductPage = () => {
                             <img src={details ? `${IMG_URL}${details.poster_path}` : null } alt={details.title} />
                         </ImageContainerStyled>
                         <DetailsContainerStyled>
-                            <h2 className="font-bold text-left text-white">{details.title}</h2>
-                            <DataContainerStyled>                        
+                            <DataContainerStyled>
+                                <h2 className="font-bold text-left text-white">{details.title || details.name}</h2>
                                 <p>{ extractYear(details.release_date) + " - " + formatRuntime(details.runtime) + " - " +  details.genres.map(genre => genre.name).join(", ")}</p>                        
                                 <p>{details.overview}</p>
                                 <p>Rating: { formatRating(details.vote_average)}</p>
                                 <p>Produced in {details.production_countries.map(country => country.name).join(", ")}</p>
                                 <p>Languages: {details.spoken_languages.map(language => language.name).join(", ")}</p>
                             </DataContainerStyled>
-                            <ContainerProductionsStyled>
-                                {
-                                    details?.production_companies? (
-                                        <ImagesProductionsContainerStyled>
-                                            {
-                                                details.production_companies.map((company) => company.logo_path != null && (
-                                                    <ImageProductionStyled key={company.id}>
-                                                        <img src={details ? `${IMG_URL}${company.logo_path}` : null } alt={details.title} />
-                                                    </ImageProductionStyled>
-                                                ))
-                                            }
-                                        </ImagesProductionsContainerStyled>
-                                    ) : null
-                                }
-                                <p>Production Companies: {details.production_companies.map(company => company.name).join(", ")}</p>
-
-
-                                <BuyContainerStyled>
-                                    <h2> $ {price} </h2>
-                                    <ButtonStyled
-                                        width="180px"
-                                        onClick={()=> {
-                                            console.log("Adding item to cart:", details);
-                                            dispatch(addToCart({
-                                                id: details.id,
-                                                title: details.name,
-                                                img: `${IMG_URL}${details.poster_path}`,
-                                                price: price,
-                                                poster: details.poster_path
-                                            })),
-                                            dispatch(toggleMessageShow(`${capitalizeText( details?.title)} added to cart`))
-                                        }}
-                                    >
-                                        Add to cart
-                                    </ButtonStyled>
-                                </BuyContainerStyled>
-                            </ContainerProductionsStyled>
+                            {
+                                details?.production_companies &&
+                                <ContainerProductionsStyled>
+                                    <ImagesProductionsContainerStyled>
+                                        {
+                                            details.production_companies.map((company) => company.logo_path &&
+                                                <ImageProductionStyled key={company.id}>
+                                                    <img src={details && `${IMG_URL}${company.logo_path}`} alt={details.title} />
+                                                </ImageProductionStyled>
+                                            )
+                                        }
+                                    </ImagesProductionsContainerStyled>
+                                    <p>Production Companies: {details.production_companies.map(company => company.name).join(", ")}</p>
+                                </ContainerProductionsStyled>
+                            }
+                            <BuyContainerStyled>
+                                <h2> $ {price} </h2>
+                                <ButtonStyled
+                                    width="180px"
+                                    onClick={()=> {
+                                        console.log("Adding item to cart:", details);
+                                        dispatch(addToCart({
+                                            id: details.id,
+                                            title: details.name,
+                                            img: `${IMG_URL}${details.poster_path}`,
+                                            price: price,
+                                            poster: details.poster_path
+                                        })),
+                                        dispatch(toggleMessageShow(`${capitalizeText( details?.title)} added to cart`))
+                                    }}
+                                >
+                                    Add to cart
+                                </ButtonStyled>
+                            </BuyContainerStyled>
                         </DetailsContainerStyled>
                     </ProductContainerStyled>
                 )

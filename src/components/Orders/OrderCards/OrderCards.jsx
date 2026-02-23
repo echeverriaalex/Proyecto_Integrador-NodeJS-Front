@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { OrderContainerStyled, PurchasesContainerStyled } from "./OrderCardsStyles";
+import { ErrorPurchasesContainerStyled, OrderContainerStyled, PurchasesContainerStyled, PurchasesWrapperStyled } from "./OrderCardsStyles";
 import { shortenId } from "../../../utils/functions";
 import { useNavigate } from "react-router-dom";
 
@@ -14,30 +14,37 @@ const OrderCards = () => {
     }
     */
 
-   
+   /*
     if(error) {
         return <h2 style={{textAlign: 'center'}}>{error}</h2>
     }
+        */
 
     return(
-        <PurchasesContainerStyled>
+        <PurchasesWrapperStyled>
             {
                 orders?.length ? (
-                    orders.map(order => (
-                        <OrderContainerStyled
-                            key={order._id} 
-                            onClick={() => navigate(`/orderdetails/${order._id}`)}
-                        >
-                            <h2>ID order: #{shortenId(order._id)}</h2>
-                            <h3>${order.price}</h3>
-                            <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
-                        </OrderContainerStyled>
-                    ))
+                    <PurchasesContainerStyled>
+                        {
+                            orders.map(order => (
+                                <OrderContainerStyled
+                                    key={order._id} 
+                                    onClick={() => navigate(`/orderdetails/${order._id}`)}
+                                >
+                                    <h2>ID order: #{shortenId(order._id)}</h2>
+                                    <h3>${order.price}</h3>
+                                    <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
+                                </OrderContainerStyled>
+                            ))
+                        } 
+                    </PurchasesContainerStyled>
                 ) : (
-                    <h2 style={{textAlign: 'center'}}>No orders found</h2>
+                    <ErrorPurchasesContainerStyled>
+                        <h2 style={{textAlign: 'center'}}>No orders found. {error} </h2>
+                    </ErrorPurchasesContainerStyled>
                 )
             }
-        </PurchasesContainerStyled>
+        </PurchasesWrapperStyled>
     )
 };
 

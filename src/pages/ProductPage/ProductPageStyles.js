@@ -17,13 +17,8 @@ export const ProductContainerStyled = styled.div`
     align-items: stretch;
     justify-content: center;
     gap: 10px;
-    
-    padding: 10px;
-
-    //min-height: ${ themePage.dimensions.minHeight };
-    // //background-color: #bb0e0eff;
+    padding: 5px;
     min-height: 40vh;
-
 
     @keyframes fadeIn {
         from {
@@ -34,11 +29,7 @@ export const ProductContainerStyled = styled.div`
         }
     }
 
-
     animation: fadeIn 1.4s linear;
-
-
-    //background-color: #0f6e0fff;
 
     @media (max-width: 576px) {
         flex-direction: column;
@@ -49,13 +40,8 @@ export const ImageContainerStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    //width: 50%;
-    min-height: 100%;
-
-    //max-width: 500px;
     border-radius: 10px;
-    //padding: 10px;
-    //background-color: #7fa007ff;
+    min-height: 100%;
 
     img{
         max-width: 100%;
@@ -70,27 +56,25 @@ export const ImageContainerStyled = styled.div`
 
 export const DetailsContainerStyled = styled.div`
     width: 50%;
-    display: flex;    
+    display: flex;
     flex-direction: column;
-    align-items: space-between;
-    justify-content: space-between;
-    padding: 5px;
-    background-color: #094369ff;
+    background-color: #1a5c88;
     border-radius: 10px;
+    gap: 40px;
     padding: 30px 20px;
-
+    
     h2,p{
         color: white;
         width: 100%;
     }
 
     h2{
-        margin: 15px 0px;
         font-size: 1.5rem;
     }
 
     @media (max-width: 576px) {
         width: 100%;
+        padding: 30px 10px;
     }
 `;
 
@@ -105,37 +89,12 @@ export const DataContainerStyled = styled.div`
 
 export const ContainerProductionsStyled = styled.div`
     display: flex;
-    padding: 10px;
     width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    padding: 50px 0px;
 `;
-
-export const BuyContainerStyled = styled.div`
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    //flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-
-    //background-color: rgb(115, 173, 6);
-
-    h2{
-        width: unset;
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 700;
-        //background-color: #d3d4d6;
-    }
-`;
-
-
-
 
 export const ImagesProductionsContainerStyled = styled.div`
     display: flex;
@@ -143,10 +102,24 @@ export const ImagesProductionsContainerStyled = styled.div`
     gap: 20px;
     width: 100%;
     flex-wrap: wrap;
-
     padding: 10px;
     border-radius: 10px;
-    background-color: #ffffff;
+`;
+
+export const BuyContainerStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    h2{
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
 `;
 
 export const ImageProductionStyled = styled.div`

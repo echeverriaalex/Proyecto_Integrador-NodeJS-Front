@@ -24,6 +24,8 @@ const ProductsExplorerPage = () => {
     const category = location.pathname === "/tvseries" ? "tvseries" : "movies";
     dispatch(setTypeProductShow(category));
     setCategoryProduct(category);
+    console.log("Estoy viendo la page de: ", category);
+    
   }, [location.pathname]);
 
   const fetchGenresList = async () => {
@@ -95,7 +97,7 @@ const ProductsExplorerPage = () => {
           Array.from({ length: 1 }).map((_, index) => <GenresSliderSkeleton key={index} />)
         ) : (
           productList.map((genreItem, index) => (
-            <GenresSlider 
+            <GenresSlider
               key={index}
               genre={genreItem.genre}
               itemsList={genreItem.list}

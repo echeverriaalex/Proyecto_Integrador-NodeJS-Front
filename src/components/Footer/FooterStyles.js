@@ -6,7 +6,7 @@ export const FooterContainerStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    
     padding: 50px;
     gap: 40px;
     width: 100%;
@@ -14,8 +14,11 @@ export const FooterContainerStyled = styled.div`
 
     //background: #303030;
 
-    @media (max-width: 576px){
+    @media (max-width: 882px){
         padding: 50px 5px;
+        flex-wrap: no-wrap;
+        flex-direction: column;
+        gap: 20px;
         //background-color: #b12f08ff;
     }
 `;
@@ -27,8 +30,18 @@ export const SectionsFooterContainerStyled = styled.div`
     padding: 10px;
     gap: 20px;
     width: 100%;
+
+    flex-wrap: wrap;
     
     //background-color: #327223;
+
+    @media (max-width: 882px){
+        padding: 50px 5px;
+        flex-wrap: no-wrap;
+        flex-direction: column;
+        gap: 20px;
+        //background-color: #b12f08ff;
+    }
 
     @media (max-width: 576px){
         padding: 5px;

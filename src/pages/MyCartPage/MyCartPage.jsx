@@ -69,11 +69,11 @@ const MyCartPage = () => {
                 <EmptyCartContainerStyled>
                     <h2>Your shopping cart is empty.</h2>
                     <NavLinksContainerStyled>
-                        <NavLinkContainerStyled to="/products">
-                            Choose products
+                        <NavLinkContainerStyled to="/tvseries">
+                            Explore tv series
                         </NavLinkContainerStyled>
-                        <NavLinkContainerStyled to="/">
-                            Explore categories
+                        <NavLinkContainerStyled to="/movies">
+                            Explore movies
                         </NavLinkContainerStyled>
                     </NavLinksContainerStyled>
                 </EmptyCartContainerStyled>

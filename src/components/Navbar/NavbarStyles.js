@@ -9,7 +9,7 @@ export const NavbarWrapper = styled.nav`
     width: 100%;
     gap: 30px;
     background-color: #041b41ff;
-    padding: 5px 30px;
+    padding: 5px 10px;
     background-color: ${themePage.colors.bgGray};
     
     @media (max-width: 576px) {
@@ -24,19 +24,25 @@ export const MainNavbarWrapper = styled.nav`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 90px;
-    gap: 30px;
+    min-height: 90px;
+    gap: 20px;
     padding: 10px;
+    flex-wrap: wrap;
 
     @media (max-width: 1200px) {
-        padding: 10px;
-        background-color: #066416ff;
+        gap: 12px;
+        padding: 8px;
+    }
+
+    @media (max-width: 992px) {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        min-height: auto;
     }
 
     @media (max-width: 576px) {
         display: none;
-        flex-direction: column;
-        gap: 15px;
     }
 `;
 
@@ -47,7 +53,8 @@ export const LogoContainerStyled = styled(NavLink)`
     gap: 5px;
     text-decoration: none;
     height: 100%;
-    width: 250px;
+    width: auto;
+    min-width: 200px;
     padding: 8px;
     //background-color: #d66b08;
     
@@ -63,6 +70,11 @@ export const LogoContainerStyled = styled(NavLink)`
         font-weight: 900;
         font-family: "Unbounded", "Julius Sans One", "Caveat", cursive, "Playfair Display", "Montserrat", sans-serif;
     }
+
+    @media (max-width: 992px) {
+        justify-content: flex-start;
+        min-width: auto;
+    }
 `;
 
 export const LinksContainerStyled = styled.div`
@@ -70,7 +82,16 @@ export const LinksContainerStyled = styled.div`
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    
     //background-color: #035c3aff;
+
+    @media (max-width: 992px) {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
 
     @media (max-width: 576px) {
         display: none;
@@ -80,7 +101,7 @@ export const LinksContainerStyled = styled.div`
 export const LinkContainerStyled = styled(NavLink)`
     color: #fff;
     text-decoration: none;
-    width: 90px;
+    min-width: 90px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -97,15 +118,26 @@ export const LinkContainerStyled = styled(NavLink)`
 
 export const ElementsContainerStyled = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
     height: 100%;
     max-height: 70px;
     padding: 0 5px;
-    min-width: 400px;
+    min-width: 0;
+    flex: 1 1 320px;
+    flex-wrap: wrap;
 
-    background-color: #1cc42aff;
+    @media (max-width: 992px) {
+        width: 100%;
+        //justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+        //flex-direction: column;
+        //align-items: stretch;
+        //max-height: none;
+    }
 `;
 
 /*

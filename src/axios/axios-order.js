@@ -2,18 +2,30 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { createOrderFail, fetchOrderFail, fetchOrderStart, fetchOrderSuccess } from "../redux/orders/orderSlice";
 
+const getAuthHeaders = (currentUser) => {
+  const token = currentUser?.token;
+
+  if (!token) {
+    throw new Error("No auth token found in currentUser");
+  }
+
+  return {
+    Authorization: token.startsWith("Bearer ") ? token : `Bearer ${token}`,
+  };
+};
+
 export const getOrders = async (dispatch, currentUser) => {
   dispatch(fetchOrderStart());
   try {
     const orders = await axios.get(`${BASE_URL}/orders/mypurchases`, {
-      headers: {
-        "x-token": currentUser.token,
-      },
+      headers: getAuthHeaders(currentUser),
     });
     
     if(orders){
-      console.log(orders.data.data);
-      dispatch(fetchOrderSuccess(orders.data.data));
+      console.log("Orders ---> ", orders);
+      
+      console.log(orders.data.orders);
+      dispatch(fetchOrderSuccess(orders.data.orders));
     }
   } catch (error) {
     console.log(error);
@@ -26,25 +38,19 @@ export const getOrders = async (dispatch, currentUser) => {
 };
 
 export const createOrder = async (dispatch, order, currentUser) => {
-  console.log("En crear orden", order);
-  
   try {
     const response = await axios.post(`${BASE_URL}/orders/create`, order, {
-      headers: {
-        "x-token": currentUser.token,
-      },
+      headers: getAuthHeaders(currentUser),
     });
-    if(response){
-      console.log("Respuesta de crear orden:", response);      
-      console.log("Orden creada:", response.data);
+
+    if(response){      
       const orders = await getOrders(dispatch, currentUser)
       console.log("ordenes anteriores", orders);
       //dispatch(fetchOrderSucess(orders));
     }
-  } catch (error) {
+  }catch(error) {
     console.log("Cerra la sesion y volve a loguearte");    
     console.log("Error creating order:", error);
     dispatch(createOrderFail())
   }
 }
-

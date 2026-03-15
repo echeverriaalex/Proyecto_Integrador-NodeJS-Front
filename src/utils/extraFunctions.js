@@ -52,3 +52,7 @@ export const selectFetchDetailsProductsByType = (typeProduct) => {
     return typeProduct === "tvseries" ?
         getTvSerieDetailsByID : getMovieDetailsByID;
 }
+
+export const formatGenreName = (genreName) => {
+    return genreName ? genreName?.replace(/\s+/g, "") || "No Genre" : "No Genre";
+}

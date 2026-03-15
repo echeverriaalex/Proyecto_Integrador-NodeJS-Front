@@ -4,22 +4,21 @@ import { GenreContainerStyled, ItemsContainerStyled, PlusTextStyled, SliderConta
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import ArrowButton from "../UI/ArrowButton/ArrowButton";
+import { formatGenreName } from "../../utils/extraFunctions";
 
 
-const GenresSlider = ({genre, itemsList, category}) => {
+const GenresSlider = ({genre, itemsList, type}) => {
 
     const navigate = useNavigate();
-    const [url, setUrl] = useState();
     const containerRef = useRef(null);
-
     const [atStart, setAtStart] = useState(true);
     const [atEnd, setAtEnd] = useState(false);
-
     const { typeProduct } = useSelector((state) => state.typeProductShow);
+    const normalizedGenre = formatGenreName(genre?.name);
 
     const handleClick = () => {
-        navigate(`/${url}/${genre.name}`, {
-            state: { idGenre: genre.id, genre: genre?.name, category }
+        navigate(`/${type}/${normalizedGenre}`, {
+            state: { idGenre: genre.id, genre: normalizedGenre, type }
         });
     };
 
@@ -62,12 +61,10 @@ const GenresSlider = ({genre, itemsList, category}) => {
       };
     }, [itemsList]); // recalcula cuando cambian los ítems
 
-
-
     useEffect(() => {
-        const urlCategory = category === "tvseries" ? "tvseries" : "movies";
-        setUrl(urlCategory);
-    }, [category]);
+        //const urlCategory = category === "tvseries" ? "tvseries" : "movies";
+        //setUrl(urlCategory);
+    }, [type]);
 
     return (
         <GenreContainerStyled>
@@ -90,10 +87,13 @@ const GenresSlider = ({genre, itemsList, category}) => {
                     ref={containerRef}
                 >
                     {
-                        itemsList.map((item) => (
+                        itemsList?.map((item) => (
                             <Card 
                                 key={item.id}
                                 data = {item}
+                                type = { type }
+                                genre = {normalizedGenre}
+                                idGenre = { genre.id }
                             />
                         ))
                     }

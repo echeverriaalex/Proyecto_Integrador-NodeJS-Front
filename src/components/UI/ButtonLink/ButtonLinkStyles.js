@@ -14,7 +14,8 @@ export const ButtonLinkContainerStyled = styled(NavLink)`
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 8px 40px;
-    width: 130px;
+    //width: 130px;
+    width: ${(props) => props.$width || '130px'};
     background-color: ${(props) => props.$bgColor || '#a51c60ff'};
     color: ${(props) => props.color || 'white'};
     font-size: ${(props) => props.fontSize || '1rem'};

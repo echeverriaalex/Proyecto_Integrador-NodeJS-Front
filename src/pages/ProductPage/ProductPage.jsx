@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BuyContainerStyled, ContainerProductionsStyled, DataContainerStyled, DetailsContainerStyled, ImageContainerStyled, ImageProductionStyled, ImagesProductionsContainerStyled, ProductContainerStyled, ProductPageWrapper } from "./ProductPageStyles";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { IMG_URL } from "../../utils/constants";
 import { extractYear, formatRating, formatRuntime, selectFetchDetailsProductsByType } from "../../utils/extraFunctions";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,20 +13,39 @@ import { capitalizeText } from "../../utils/functions";
 const ProductPage = () => {
 
     const dispatch = useDispatch();
+    const location = useLocation();
     const [details, setDetails] = useState(null);
     const { id } = useParams();
     const [showLoading, setShowLoading] = useState(true);
     const { typeProduct } = useSelector((state) => state.typeProductShow);
+    const [, pathTypeProduct, pathGenre, , pathIdProduct] = location.pathname.split("/");
+    
+    //const { idGenre, genre: genreName, type } = location.state || {};
 
-    const price = 9.99 * (details?.production_companies?.length || 9.99);
 
+    console.log("details: ", details);
+    //console.log("Location del product page --> ", location);
 
-    console.log(details);
     
 
+
+    // Checkeo que esten en el mismo type product, sino uso el del path para hacer el fetch de detalles, 
+    // ya que el del state se setea en la page de exploracion y podria no coincidir 
+    // si el usuario navega directo a un producto sin pasar por la page de exploracion.
+    const fetchType = typeProduct === pathTypeProduct ? typeProduct : pathTypeProduct;
+
+    /*
+    const pathTypeProduct = pathParts[1];
+    const pathGenre = pathParts[2];
+    const pathIdProduct = pathParts[4];
+    */
+    
+    const price = 9.99 * (details?.production_companies?.length || 9.99);
+    
+    
     const fetchProductDetails = async() => {
         try {
-            const fetchDetailsFunction = selectFetchDetailsProductsByType(typeProduct);
+            const fetchDetailsFunction = selectFetchDetailsProductsByType(fetchType);
             const productDetails = await fetchDetailsFunction(id);
             console.log(productDetails);
             setDetails(productDetails);
@@ -37,9 +56,6 @@ const ProductPage = () => {
     }
 
     useEffect(() => {
-        //typeProduct === "tv" ? fetchTvDetails() : fetchMovieDetails();
-
-
         fetchProductDetails();
         
         const timer = setTimeout(() => {
@@ -101,10 +117,11 @@ const ProductPage = () => {
                                         console.log("Adding item to cart:", details);
                                         dispatch(addToCart({
                                             id: details.id,
-                                            title: details.name,
-                                            img: `${IMG_URL}${details.poster_path}`,
+                                            title: details.title || details.name,
+                                            description: pathTypeProduct + "/" + pathGenre + "/" + details.overview,
+                                            image: `${IMG_URL}${details.poster_path}`,
                                             price: price,
-                                            poster: details.poster_path
+                                            //poster: details.poster_path
                                         })),
                                         dispatch(toggleMessageShow(`${capitalizeText( details?.title)} added to cart`))
                                     }}

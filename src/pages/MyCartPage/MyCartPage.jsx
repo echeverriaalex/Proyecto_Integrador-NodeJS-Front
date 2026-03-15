@@ -6,6 +6,7 @@ import { clearCart, deleteItem } from "../../redux/cart/cartSlice";
 import { totalPrice } from "../../utils/functions";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import Quantity from "../../components/Navbar/Modals/Components/Quantity/Quantity";
+import { SHIPPING_COST } from "../../utils/constants";
 
 const MyCartPage = () => {
 
@@ -37,7 +38,7 @@ const MyCartPage = () => {
                                     <CartItemContainerStyled key={item.id}>
                                         <ItemDetailsContainerStyled >
                                             <ImageContainerStyled>
-                                                <img src={item.img} alt={item.title} />
+                                                <img src={item.image} alt={item.title} />
                                             </ImageContainerStyled>
                                             <h3>{ item.title?.toUpperCase() }</h3>
                                         </ItemDetailsContainerStyled>
@@ -52,12 +53,21 @@ const MyCartPage = () => {
                                                 </Button>
                                             </PriceQuantityContainerStyled>
                                             <p>$ { (item.price)?.toFixed(2) }</p>
+                                            <p>Subtotal: ${ (item.price * item.quantity)?.toFixed(2) }</p>
                                         </PriceContainerStyled>
                                     </CartItemContainerStyled>
                                 ))
                             }
                         </CartItemsContainerStyled>
                         <TotalContainerStyled>
+                            <DescriptionTotalContainerStyled>
+                                <span>Subtotal: </span>
+                                <span>$ { cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2) }</span>
+                            </DescriptionTotalContainerStyled>
+                            <DescriptionTotalContainerStyled>
+                                <span>Shipping cost: </span>
+                                <span>$ { shippingCost.toFixed(2) }</span>
+                            </DescriptionTotalContainerStyled>
                             <DescriptionTotalContainerStyled>
                                 <span>Total: </span>
                                 <span>$ { (cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0) + shippingCost).toFixed(2) }</span>

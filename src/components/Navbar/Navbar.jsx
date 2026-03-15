@@ -1,5 +1,5 @@
 import SearchBar from "../UI/SearchBar/SearchBar";
-import { BlockIconsContainerStyled, ElementsContainerStyled, IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper, UserContainerSessionStyled } from "./NavbarStyles";
+import { BlockIconsContainerStyled, ElementsContainerStyled, IconsContainerStyled, LinkContainerStyled, LinksContainerStyled, LogoContainerStyled, MainNavbarWrapper, MobileContainerStyled, NavbarWrapper, UserContainerSessionStyled, UserContainerStyled } from "./NavbarStyles";
 //import Logo from "../../assets/cinespace-logo.png";
 //import Logo from "../../assets/infinity-watch.png";
 //import Logo from "../../assets/infinity-watch2.png";
@@ -28,8 +28,8 @@ const Navbar = () => {
     const navigate = useNavigate();
 
 
-    console.log("current user: ", currentUser?.name);
-    
+    //console.log("current user: ", currentUser?.name);
+    //console.log("All user data: ", currentUser);
 
     return (
         <NavbarWrapper className="bg-blue-200 p-4">
@@ -80,14 +80,15 @@ const Navbar = () => {
                 </LogoContainerStyled>
                 <LinksContainerStyled>
                     <LinkContainerStyled to="/">Home</LinkContainerStyled>
-                    <LinkContainerStyled to="/tvseries">Tv&Series</LinkContainerStyled>
+                    <LinkContainerStyled to="/tvseries">Tv_&_Series</LinkContainerStyled>
                     <LinkContainerStyled to="/movies">Movies</LinkContainerStyled>
                     {
-                        currentUser && <LinkContainerStyled to="/mylist">MyList</LinkContainerStyled>
+                        currentUser && <LinkContainerStyled to="/mylist">My_List</LinkContainerStyled>
                     }
                     <LinkContainerStyled to="/about">About</LinkContainerStyled>
-                    <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
+                    <LinkContainerStyled to="/mypurchases">My_Purchases</LinkContainerStyled>
                     {
+                        /*
                         currentUser ?
                             <Button onClick={()=>{
                                 dispatch(setCurrentUser(null));
@@ -97,27 +98,30 @@ const Navbar = () => {
                                 Logout
                             </Button>
                             :
-                            <ButtonLink route="/login" $bgColor="#464646ff">Login</ButtonLink>
+                            <ButtonLink route="/login" $bgColor="#464646ff">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                Login
+                            </ButtonLink>
+                        */
                     }
                 </LinksContainerStyled>
                 <ElementsContainerStyled>
                     <SearchBar />
-                    {/*
                     <MenuIcon />
                     <CartIcon />
-                    */}
                     {
                         currentUser ?
-                            <>
-                                <UserContainerSessionStyled>
+                            <UserContainerSessionStyled>
+                                <UserContainerStyled>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user">
                                         <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
                                         <circle cx="12" cy="7" r="4"/>
                                     </svg>
                                     <p>{ formatUserName(currentUser?.name) }</p>
-                                </UserContainerSessionStyled>
-
-                                {/*
+                                </UserContainerStyled>
                                 <Button onClick={()=>{
                                     dispatch(setCurrentUser(null));
                                         navigate("/");
@@ -125,12 +129,10 @@ const Navbar = () => {
                                 >
                                     Logout
                                 </Button>
-                                */}
-                            </>
+                            </UserContainerSessionStyled>
                             :
                             <>
                                 <ButtonLink route="/login" $bgColor="#464646ff">Login</ButtonLink>
-                                
                             </>
                     }
                 </ElementsContainerStyled>

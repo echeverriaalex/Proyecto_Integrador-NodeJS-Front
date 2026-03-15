@@ -11,20 +11,20 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import MyCartPage from "../pages//MyCartPage/MyCartPage";
 import ErrorNotFoundPage from "../pages/ErrorNotFoundPage/ErrorNotFoundPage";
 import SuccessfulPage from "../pages/SuccessfulPage/SuccessfulPage";
+import OrderDetailsPage from "../pages/OrderDetailsPage/OrderDetailsPage";
 
 function Router() {
   return (
     <ReactDomRoutes>
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
-      <Route path="/:type/product/:id" element={<ProductPage />} />
       <Route path="/tvseries" element={<ProductsExplorerPage />} />
       <Route path="/tvseries/:genre" element={<GenrePage />} />
+      <Route path="/:type/:genre/product/:id" element={<ProductPage />} />
       <Route path="/movies" element={<ProductsExplorerPage />} />
       <Route path="/movies/:genre" element={<GenrePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      
       <Route path="/about" element={<AboutPage />} />
 
       { 
@@ -33,18 +33,25 @@ function Router() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<CardPage />} />
-        
         <Route path="/pagecategory/:category" element={<CategoryPage />} />
-        <Route path="/orderdetails/:id" element={<OrderDetailsPage />} />
         */
       }
       
-      
-      <Route path="/mypurchases" element={
-        <ProtectedRoute redirectTo={'/login'}>
-          <MyPurchasesPage />
-        </ProtectedRoute>
-      } />
+      <Route path="/orderdetails/:id" 
+        element={
+          <ProtectedRoute redirectTo={'/login'}>
+            <OrderDetailsPage />
+          </ProtectedRoute>
+        }
+      />
+        
+      <Route path="/mypurchases" 
+        element={
+          <ProtectedRoute redirectTo={'/login'}>
+            <MyPurchasesPage />
+          </ProtectedRoute>
+        }
+      />
       
       <Route 
         path="/mycart" 

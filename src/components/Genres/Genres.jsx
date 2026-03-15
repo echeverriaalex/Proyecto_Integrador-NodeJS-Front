@@ -3,11 +3,11 @@ import { GenresContainerStyled, ItemContainerStyled, ItemsContainerStyled } from
 import WallpaperGenres from "../../utils/setWallpaperGenres";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFetchGenreByType } from "../../utils/extraFunctions";
+import { formatGenreName, selectFetchGenreByType } from "../../utils/extraFunctions";
 import { isError, isFetching, success } from "../../redux/slice/genresSlice";
 import ArrowButton from "../UI/ArrowButton/ArrowButton";
 
-const Genres = () => {
+const Genres = ( /*typeProduct*/ ) => {
     
     // Constantes correctas y utilizadas    
     const { genresList } = useSelector((state) => state.genres);
@@ -19,6 +19,11 @@ const Genres = () => {
 
     // Constantes a revisar tu implementacion
     const { typeProduct } = useSelector((state) => state.typeProductShow);
+
+    //const formatGenreName = (genreName) => genreName?.replace(/\s+/g, "") || "";
+    //const normalizedGenre = formatGenreName(genre?.name);
+
+    //const normalizedGenre = formatGenreName(genre?.name);
     
     const fetchGenres = async() => {
         try{
@@ -88,6 +93,7 @@ const Genres = () => {
                             key={genre.id}
                             $background={WallpaperGenres[genre.name]}
                             onClick={
+                                
                                 typeProduct === "tvseries" ? 
                                     () => navigate(`/tvseries/${genre.name}`, {
                                         state: { idGenre: genre.id, genre: genre.name, category: "tvseries" }
@@ -96,6 +102,13 @@ const Genres = () => {
                                     () => navigate(`/movies/${genre.name}`, {
                                         state: { idGenre: genre.id, genre: genre.name, category: "movies" }
                                     })
+                                
+
+                                /*
+                                navigate(`/${typeProduct}/${genre.name}`, {
+                                    state: { idGenre: genre.id, genre: genre.name, typeProduct }
+                                })
+                                */
                             }
                         >
                             <p className="font-bold text-xl">{genre.name}</p>

@@ -126,7 +126,9 @@ export const ElementsContainerStyled = styled.div`
     padding: 0 5px;
     min-width: 0;
     flex: 1 1 320px;
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
+
+    background-color: #1cc42aff;
 
     @media (max-width: 992px) {
         width: 100%;
@@ -165,7 +167,26 @@ export const UserContainerSessionStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
+    cursor: pointer;
+    //width: 300px;
+    
+    //background-color: #c10cc7b7;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    
+    p{
+        font-size: 20px;
+        font-family: "Unbounded", "Julius Sans One", "Caveat", cursive, "Playfair Display", "Montserrat", sans-serif;
+    }   
+`;
+
+export const UserContainerStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
     //width: 300px;
     

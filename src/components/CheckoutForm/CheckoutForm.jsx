@@ -25,9 +25,9 @@ const CheckoutForm = ({ cartItems, price, shippingCost }) => {
           const orderData = {
             items: cartItems,
             shippingDetails: { ...values },
+            subtotal: price,
             shippingCost,
-            //total: price + shippingCost,
-            //price,
+            total: price + shippingCost
           }
           try {
             await createOrder(dispatch, orderData, currentUser)

@@ -5,14 +5,14 @@ import { CatalogContainerStyled, ProductCatalogWrapper } from "./ProductCatalogS
 import { setTypeProductShow } from "../../redux/slice/typeProductShowSlice";
 import SkeletonCard from "../Card/SkeletonCard";
     
-const ProductCatalog = ({ dataList, typeProduct }) => {
+const ProductCatalog = ({ dataList, genre, idGenre, type }) => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!typeProduct) return;
-        dispatch(setTypeProductShow(typeProduct));
-    }, [dispatch, typeProduct]);
+        if (!type) return;
+        dispatch(setTypeProductShow(type));
+    }, [dispatch, type]);
 
     return (
         <ProductCatalogWrapper>
@@ -24,6 +24,9 @@ const ProductCatalog = ({ dataList, typeProduct }) => {
                                 <Card
                                     key = {index}
                                     data = {item}
+                                    type = {type}
+                                    genre = {genre}
+                                    idGenre = {idGenre}
                                 />
                             ))
                         }

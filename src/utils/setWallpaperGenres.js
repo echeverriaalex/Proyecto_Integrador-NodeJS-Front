@@ -1,4 +1,4 @@
-import Action from "../assets/imageGenres/action.jpg";
+import ActionAdventure from "../assets/imageGenres/action.jpg";
 import Mystery from "../assets/imageGenres/mystery.png";
 import War from "../assets/imageGenres/war.webp";
 import Fantasy from "../assets/imageGenres/fantasy.jpg";
@@ -20,7 +20,7 @@ import ScienceFiction from "../assets/imageGenres/ScienceFiction.jpg";
 import TVMovie from "../assets/imageGenres/TVMovie.jpeg";
 
 const WallpaperGenres = {
-    Action,
+    "Action&Adventure": ActionAdventure,
     Horror,
     War,
     Fantasy,
@@ -38,8 +38,8 @@ const WallpaperGenres = {
     Adventure,
     Music,
     Romance,
-    "Science Fiction": ScienceFiction,
-    "TV Movie": TVMovie,
+    ScienceFiction,
+    TVMovie,
 };
 
 export default WallpaperGenres;

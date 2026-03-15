@@ -18,20 +18,19 @@ const ProductsExplorerPage = () => {
   const location = useLocation();
   const [showLoading, setShowLoading] = useState(true);
   const { productList } = useSelector((state) => state.products);
-  const [categoryProduct, setCategoryProduct] = useState();
+  const [typeProduct, setTypeProduct] = useState();
 
   useEffect(() => {
     const category = location.pathname === "/tvseries" ? "tvseries" : "movies";
     dispatch(setTypeProductShow(category));
-    setCategoryProduct(category);
+    setTypeProduct(category);
     console.log("Estoy viendo la page de: ", category);
-    
   }, [location.pathname]);
 
   const fetchGenresList = async () => {
     try{
       dispatch(isFetchingGenres());
-      const fetchGenresFunction = selectFetchGenreByType(categoryProduct);
+      const fetchGenresFunction = selectFetchGenreByType(typeProduct);
       const genresListProduct = await fetchGenresFunction();
       
       if(genresListProduct){
@@ -53,9 +52,14 @@ const ProductsExplorerPage = () => {
 
     try{
       dispatch(isFetching());
-      const fetchFunction = selectFetchGenreProductsByTypePaginated(categoryProduct);
+      const fetchFunction = selectFetchGenreProductsByTypePaginated(typeProduct);
       const genresWithLists = await Promise.all(
         genresListProduct.genres.map(async (genre) => {
+
+          
+          //genre = genre?.replace(/\s+/g, "") || "";
+
+
           const productData = await fetchFunction(genre.id, 1); // Always fetch page 1
           return {
             genre: genre,
@@ -73,7 +77,7 @@ const ProductsExplorerPage = () => {
 
 
   useEffect(() => {
-    if (!categoryProduct) return;
+    if (!typeProduct) return;
 
     setShowLoading(true);
     fetchProductsAndGenres();
@@ -82,16 +86,18 @@ const ProductsExplorerPage = () => {
       setShowLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [ categoryProduct ]);
+  }, [ typeProduct ]);
 
   return (
     <ProductsExplorerPageWrapper>
-      <HeroContainerStyled $wallpaper={categoryProduct === "tvseries" ? tvseries : movies}>
+      <HeroContainerStyled $wallpaper={typeProduct === "tvseries" ? tvseries : movies}>
         <h1 className="font-bold text-center text-white">
-          {categoryProduct === "tvseries" ? "TV & Series" : "Movies"}
+          {typeProduct === "tvseries" ? "TV & Series" : "Movies"}
         </h1>
       </HeroContainerStyled>
-      <Genres />
+      <Genres
+        typeProduct={typeProduct}
+      />
       <GenresListContainerStyled>
         {showLoading ? (
           Array.from({ length: 1 }).map((_, index) => <GenresSliderSkeleton key={index} />)
@@ -101,7 +107,7 @@ const ProductsExplorerPage = () => {
               key={index}
               genre={genreItem.genre}
               itemsList={genreItem.list}
-              category={categoryProduct}
+              type={typeProduct}
             />
           ))
         )}

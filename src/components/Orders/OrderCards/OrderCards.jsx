@@ -1,49 +1,35 @@
-import { useSelector } from "react-redux";
-import { ErrorPurchasesContainerStyled, OrderContainerStyled, PurchasesContainerStyled, PurchasesWrapperStyled } from "./OrderCardsStyles";
+import { OrderContainerStyled, PurchasesContainerStyled, PurchasesWrapperStyled } from "./OrderCardsStyles";
 import { shortenId } from "../../../utils/functions";
 import { useNavigate } from "react-router-dom";
 
-const OrderCards = () => {
+const OrderCards = (orders) => {
 
-    const { orders, loading, error } = useSelector(state => state.orders)
     const navigate = useNavigate();
+    const ordersArray = orders?.orders || [];
 
     /*
-    if(loading && !orders){
-        return <Loader styles={{ height: "50px", width: "50px" }}/>
-    }
+    console.log("en orders cards ---> ", ordersArray);
+    console.log("type  ---> ", typeof (ordersArray));
+    console.log("length  ---> ", ordersArray.length);
     */
-
-   /*
-    if(error) {
-        return <h2 style={{textAlign: 'center'}}>{error}</h2>
-    }
-        */
 
     return(
         <PurchasesWrapperStyled>
-            {
-                orders?.length ? (
-                    <PurchasesContainerStyled>
-                        {
-                            orders.map(order => (
-                                <OrderContainerStyled
-                                    key={order._id} 
-                                    onClick={() => navigate(`/orderdetails/${order._id}`)}
-                                >
-                                    <h2>ID order: #{shortenId(order._id)}</h2>
-                                    <h3>${order.price}</h3>
-                                    <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
-                                </OrderContainerStyled>
-                            ))
-                        } 
-                    </PurchasesContainerStyled>
-                ) : (
-                    <ErrorPurchasesContainerStyled>
-                        <h2 style={{textAlign: 'center'}}>No orders found. {error} </h2>
-                    </ErrorPurchasesContainerStyled>
-                )
-            }
+            <PurchasesContainerStyled>
+                {
+                    ordersArray?.map(order => (
+                        <OrderContainerStyled
+                            key={order._id} 
+                            onClick={() => navigate(`/orderdetails/${order._id}`)}
+                        >
+                            <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
+                            <p>ID order: #{shortenId(order._id)}</p>
+                            <p>Items: {order.items.length}</p>
+                            <h3>$ { order.total?.toFixed(2) }</h3>
+                        </OrderContainerStyled>
+                    ))
+                } 
+            </PurchasesContainerStyled>
         </PurchasesWrapperStyled>
     )
 };

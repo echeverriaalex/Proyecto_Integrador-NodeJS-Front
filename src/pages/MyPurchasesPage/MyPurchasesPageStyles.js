@@ -26,3 +26,21 @@ export const  MyPurchasesPageWrapper = styled.div`
         font-size: 2rem;
     }
 `;
+
+export const ErrorPurchasesContainerStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0px;
+    
+    //min-height: 60vh;
+    //background: #c70d6a;
+
+    h2{
+        width: 100%;
+        color: white;
+        font-weight: 500;
+        font-size: 1.5rem;
+        font-family: Montserrat, sans-serif;
+    }
+`;

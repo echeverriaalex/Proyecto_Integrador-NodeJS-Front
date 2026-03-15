@@ -8,7 +8,7 @@ export const ItemCardContainerStyled = styled.div`
   justify-content: space-between;
   width: 100%;
   max-height: 280px;
-  gap: 15px;
+  gap: 10px;
   border: 2px solid #d98321;
 `;
 
@@ -16,7 +16,7 @@ export const ImageContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 60%;
 
   img {
     width: 100%;
@@ -28,7 +28,7 @@ export const ImageContainerStyled = styled.div`
 export const DetailsContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
   width: 100%;
   padding: 10px;
@@ -40,16 +40,16 @@ export const DetailsContainerStyled = styled.div`
 
   h2{
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   h3, p{
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   @media (max-width: 576px) {
     h2{
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     h3, p{

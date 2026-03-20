@@ -115,8 +115,12 @@ const Navbar = () => {
                 </LinksContainerStyled>
                 <ElementsContainerStyled>
                     <SearchBar />
-                    <MenuIcon />
-                    <CartIcon />
+                    {
+                    /*
+                        <MenuIcon />
+                        <CartIcon />
+                    */
+                    }
                     {
                         currentUser ?
                             <UserContainerSessionStyled>

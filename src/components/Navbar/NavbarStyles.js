@@ -130,7 +130,7 @@ export const ElementsContainerStyled = styled.div`
     flex: 1 1 320px;
     //flex-wrap: wrap;
 
-    background-color: #1cc42aff;
+    //background-color: #1cc42aff;
 
     @media (max-width: 992px) {
         width: 100%;
@@ -176,7 +176,7 @@ export const UserContainerSessionStyled = styled.div`
     //background-color: #c10cc7b7;
     padding: 5px 10px;
     border-radius: 10px;
-    border: 1px solid #fff;
+    //border: 1px solid #fff;
     
     p{
         font-size: 20px;

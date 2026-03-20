@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../../redux/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { formatUserName } from "../../utils/extraFunctions";
+import ModalMessage from "./Modals/ModalMessage";
 
 const Navbar = () => {
 
@@ -35,6 +36,7 @@ const Navbar = () => {
         <NavbarWrapper className="bg-blue-200 p-4">
             <ModalMenu />
             <ModalCart />
+            <ModalMessage />
             <MobileContainerStyled>
                 <LogoContainerStyled to="/">
                     <img src={Logo} alt="Logo"/>
@@ -83,9 +85,12 @@ const Navbar = () => {
                     <LinkContainerStyled to="/tvseries">Tv_&_Series</LinkContainerStyled>
                     <LinkContainerStyled to="/movies">Movies</LinkContainerStyled>
                     {
+                        /*
                         currentUser && <LinkContainerStyled to="/mylist">My_List</LinkContainerStyled>
+                        */
                     }
                     <LinkContainerStyled to="/about">About</LinkContainerStyled>
+                    <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
                     <LinkContainerStyled to="/mypurchases">My_Purchases</LinkContainerStyled>
                     {
                         /*

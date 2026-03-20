@@ -42,23 +42,22 @@ const ModalMenu = () => {
                         </HeadContainerStyled>
                         <LinksContainerStyled onClick={() => dispatch(toggleMenuHidden())}>
                             <LinkContainerStyled to="/">Home</LinkContainerStyled>
-                            <LinkContainerStyled to="/tvseries">Tv & Series</LinkContainerStyled>
+                            <LinkContainerStyled to="/tvseries">Tv_&_Series</LinkContainerStyled>
                             <LinkContainerStyled to="/movies">Movies</LinkContainerStyled>
-                            <LinkContainerStyled to="/mylist">MyList</LinkContainerStyled>
+                            { /* <LinkContainerStyled to="/mylist">My_List</LinkContainerStyled> */}
                             <LinkContainerStyled to="/about">About</LinkContainerStyled>
                             <LinkContainerStyled to="/contact">Contact</LinkContainerStyled>
-                            {
-                                currentUser ?
-                                    <LinkContainerStyled onClick={()=>{
-                                        dispatch(setCurrentUser(null));
-                                            navigate("/");
-                                        }}
-                                    >
-                                        Logout
-                                    </LinkContainerStyled>
-                                    :
-                                    <LinkContainerStyled to="/login">Login</LinkContainerStyled>
-                            }
+                            <LinkContainerStyled to="/mypurchases">My_Purchases</LinkContainerStyled>
+                            <Button
+                                onClick={() => {
+                                    dispatch(setCurrentUser(null));
+                                    navigate("/login");
+                                }
+                                }
+                                //bgColor="#420000"
+                            >
+                                {currentUser ? "Logout" : "Login"}
+                            </Button>
                         </LinksContainerStyled>
                     </ContainerStyled>
                 )}

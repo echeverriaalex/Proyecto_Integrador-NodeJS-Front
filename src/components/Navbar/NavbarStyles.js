@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { themePage } from "../styles/GlobalStyles";
 
+import { IoIosCloseCircle } from "react-icons/io";
+
 export const NavbarWrapper = styled.nav`
     display: flex;
     align-items: center;
@@ -236,4 +238,13 @@ export const BlockIconsContainerStyled = styled.div`
     justify-content: center;
     align-items: center;
     gap: 15px;
+`;
+
+export const CloseIcon = styled(IoIosCloseCircle)`
+    display: flex;
+    align-items: center;  
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
 `;

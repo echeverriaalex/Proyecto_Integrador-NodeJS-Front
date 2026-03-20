@@ -147,3 +147,70 @@ export const EmptyContainerStyled = styled.div`
         font-family: 'Poppins', sans-serif;
     }
 `;
+
+// Modals message styles
+export const MessageOverLayContainerStyled = styled(motion.div)`
+    position: fixed;
+    top: 140px;
+    right: 10px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 450px;
+    padding: 10px 20px;
+    background: #1b1b1b;
+    border-radius: 1rem;
+    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+    //max-height: 100px;
+`;
+
+export const HeadMessageContainerStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+export const DataMessageContainerStyled = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+`;
+
+export const ImageMessageContainerStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 5px;
+    }
+`;
+
+export const TextMessageContainerStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-content: center;
+    gap: 10px;
+
+    h3, p{
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    p{
+        font-size: 1rem;
+        color: #048b0f;
+    }
+`;

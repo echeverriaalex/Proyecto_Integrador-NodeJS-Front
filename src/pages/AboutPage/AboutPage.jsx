@@ -5,24 +5,12 @@ const AboutPage = () => {
     <AboutPageWrapper>
       <CardsContainerStyled>
         <CardWrapperStyled>
-          <img src="https://www.yourcentralvalley.com/wp-content/uploads/sites/54/2024/08/2024_Pokemon_World_Championships_Event_Photo_6.jpg?w=2560&h=1440&crop=1" alt="About Us" />
+          <img src="https://editorial.rottentomatoes.com/wp-content/uploads/2019/07/RT_300EssentialMovies_600x314.jpg" alt="About Us" />
           <TextContainerStyled>
-            <h2>We are PokéWorld!</h2>
+            <h2>We are Infinify!</h2>
             <p>
-              We are a digital platform that sells exclusively Pokémon products, 
-              such as collectible cards, action figures, and some all original and 
-              certified. That's not all! We also organize the Pokémon World Championship, 
+              We are a digital platform that sells exclusively Tv Series & Movies,
               awarding wonderful prizes to the winning fans. Join our wonderful community!
-            </p>
-          </TextContainerStyled>
-        </CardWrapperStyled>
-        <CardWrapperStyled>
-          <img src="https://www.serebii.net/themeparks/universalstudiosjapan/nolimitparade.jpg" alt="PokePark" />
-          <TextContainerStyled>
-            <h2>Don't miss our events</h2>
-            <p>
-              We invite you to a unique, fun, and unforgettable
-              experience! Come try it and learn all the new features.
             </p>
           </TextContainerStyled>
         </CardWrapperStyled>

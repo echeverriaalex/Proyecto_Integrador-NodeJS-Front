@@ -49,7 +49,6 @@ const cartSlice = createSlice({
                 hidden: !state.hidden,
             }
         },
-
         /*
         setShippingCost: (state, action) => {
             state.shippingCost = action.payload;
@@ -60,3 +59,8 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer;
 export const { addToCart, removeFromCart, deleteItem, clearCart, toggleCartHidden } = cartSlice.actions;
+
+export const getQuantityItemByID = (state, id) => {
+    const item = state.cart.cartItems.find((i) => i.id === id);
+    return item ? item.quantity : 0;
+};

@@ -17,6 +17,6 @@ export const shortenId = (id) => {
 
 export const capitalizeText = (text) => {
     if (!text) return
-    text = text.trim().split(" ");
-    return text[0].charAt(0).toUpperCase() + text[0].slice(1).toLowerCase();
+    //text = text.trim()
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 };

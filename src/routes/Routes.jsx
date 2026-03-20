@@ -12,6 +12,7 @@ import MyCartPage from "../pages//MyCartPage/MyCartPage";
 import ErrorNotFoundPage from "../pages/ErrorNotFoundPage/ErrorNotFoundPage";
 import SuccessfulPage from "../pages/SuccessfulPage/SuccessfulPage";
 import OrderDetailsPage from "../pages/OrderDetailsPage/OrderDetailsPage";
+import ContactPage from "../pages/ContactPage/ContactPage";
 
 function Router() {
   return (
@@ -26,11 +27,12 @@ function Router() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
 
       { 
         /* 
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+        
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<CardPage />} />
         <Route path="/pagecategory/:category" element={<CategoryPage />} />

@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
     visible: false,
-    message: null
+    title: null,
+    message: null,
+    image: null
 };
 
 export const messageSlice = createSlice({
@@ -13,7 +15,9 @@ export const messageSlice = createSlice({
             return {
                 ...state,
                 visible: !state.visible,
-                message: action.payload
+                title: action.payload?.title || null,
+                message: action.payload?.message || null,
+                image: action.payload?.image || null
             };
         }
     }

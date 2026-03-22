@@ -1,53 +1,46 @@
 import { useNavigate } from "react-router-dom";
 import { ExtraContainerStyled, FooterContainerStyled, GenresFooterContainerStyled, ItemFooterContainerStyled, ItemsFooterContainerStyled, LinkContainerStyled, LinksContainerStyled, MenuContainerStyled, SectionGenresContainerStyled, SectionsFooterContainerStyled } from "./FooterStyles";
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getMoviesGenres } from "../../axios/axios-movies";
-import { getTvSeriesGenres } from "../../axios/axios-tvseries";
+import { formatGenreName, selectFetchGenreByType } from "../../utils/extraFunctions";
 
 const Footer = () => {
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-
     const [moviesGenresList, setMoviesGenresList] = useState([]);
     const [tvseriesGenresList, setTvseriesGenresList] = useState([]);
 
-    //const { genresList, isLoading, error} = useSelector((state) => state.genres);
-
-    const fetchGenresList = async () => {
+    const processFetchyType = async (type) => {
         try{
-            //dispatch(isFetching());
-            const moviesGenres = await getMoviesGenres();
-            console.log("MOVIES", moviesGenres)
-            setMoviesGenresList(moviesGenres?.genres || []);
+            const fetchGenresFunction = selectFetchGenreByType(type);
+            const genresList = await fetchGenresFunction();
 
-            const tvseriesGenres = await getTvSeriesGenres();
-            setTvseriesGenresList(tvseriesGenres?.genres || []);
-
-            /*
-            if(genresList) {
-                dispatch(success(genresList?.genres));
+            if(genresList){
+                if(type === "movies"){
+                    setMoviesGenresList(genresList.genres.map(genre => ({
+                        ...genre,
+                        name: genre.name,
+                        nameFormated: formatGenreName(genre.name)
+                    })));
+                } else if(type === "tvseries"){
+                    setTvseriesGenresList(genresList.genres.map(genre => ({
+                        ...genre,
+                        name: genre.name,
+                        nameFormated: formatGenreName(genre.name)
+                    })));
+                }
             }
-            else{
-                console.error(`Genre ${genre} not found.`);
-            }
-            */
         }catch(error){
-            //dispatch(isError(error));
             console.error(`Error loading genres on footer.`, error);
         }
+    }
+    
+    const fetchGenresList = async () => {
+        processFetchyType("movies");
+        processFetchyType("tvseries");
     }
 
     useEffect(() => {
         fetchGenresList();
-
-        //console.log("MOVIES", moviesGenresList)
-            
-            
-        console.log("TV SERIES", tvseriesGenresList);
-        
     }, []);
     
     return (
@@ -60,8 +53,9 @@ const Footer = () => {
                             {moviesGenresList.map((genre) => (
                                 <ItemFooterContainerStyled
                                     key={genre?.id}
-                                    //onClick={() => navigate(`/genres/${genre.id}`)}
-                                    onClick={() => navigate(`/movies/${genre.name}`)}
+                                    onClick={() => navigate(`/movies/${genre.nameFormated}`, {
+                                        state: { idGenre: genre.id, genre: genre.nameFormated, type: "movies" }
+                                    })}
                                 >
                                     <p className="font-bold"> {genre?.name} </p>
                                 </ItemFooterContainerStyled>
@@ -74,8 +68,9 @@ const Footer = () => {
                             {tvseriesGenresList.map((genre) => (
                                 <ItemFooterContainerStyled 
                                     key={genre?.id}
-                                    //onClick={() => navigate(`/genres/${genre.id}`)}
-                                    onClick={() => navigate(`/tvseries/${genre.name}`)}
+                                    onClick={() => navigate(`/tvseries/${genre.nameFormated}`, {
+                                        state: { idGenre: genre.id, genre: genre.nameFormated, type: "tvseries" }
+                                    })}
                                 >
                                     <p className="font-bold"> {genre?.name} </p>
                                 </ItemFooterContainerStyled>
@@ -83,7 +78,6 @@ const Footer = () => {
                         </ItemsFooterContainerStyled>
                     </GenresFooterContainerStyled>
                 </SectionGenresContainerStyled>
-
                 <MenuContainerStyled>
                     <h2 className="text-xl font-bold text-white">Menu</h2>
                     <LinksContainerStyled>

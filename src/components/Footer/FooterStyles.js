@@ -4,22 +4,17 @@ import { themePage } from "../styles/GlobalStyles";
 
 export const FooterContainerStyled = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    padding: 50px;
-    gap: 40px;
+    padding: 20px;
+    gap: 20px;
     width: 100%;
     background-color: ${themePage.colors.bgGray};
 
-    //background: #303030;
-
     @media (max-width: 882px){
-        padding: 50px 5px;
-        flex-wrap: no-wrap;
-        flex-direction: column;
+        padding: 30px 5px;
         gap: 20px;
-        //background-color: #b12f08ff;
     }
 `;
 
@@ -28,12 +23,11 @@ export const SectionsFooterContainerStyled = styled.div`
     justify-content: center;
     align-items: center;
     padding: 10px;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
-
     flex-wrap: wrap;
     
-    //background-color: #327223;
+    //background-color: #158f97;
 
     @media (max-width: 882px){
         padding: 50px 5px;
@@ -51,26 +45,33 @@ export const SectionsFooterContainerStyled = styled.div`
 
 export const SectionGenresContainerStyled = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 10px;
-    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 5px;
+    width: 70%;
+    //background: #4830b1;
 
-    //background: #5f5f5f;
+    @media (max-width: 882px){
+        padding: 5px;
+        width: 80%;
+        flex-direction: column;
+    }
+
+
+    @media (max-width: 576px){
+        padding: 5px;
+        width: 100%;
+        flex-direction: column;
+    }
 `;
 
 export const GenresFooterContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 20px;
-    align-items: center;
     padding: 50px 30px;
     width: 100%;
     border-radius: 10px;
-
     background: #1b1b1b;
 
     h2 {
@@ -137,11 +138,11 @@ export const MenuContainerStyled = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //background-color: #2d3748;
-    //background-color: #0f6d06ff;
     gap: 20px;
-    width: 50%;
-
+    width: 100%;
+    max-width: 220px;
+    //background-color: #6d0664;
+    
     h2 {
         width: 100%;
         text-align: center;
@@ -153,8 +154,6 @@ export const LinksContainerStyled = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //background-color: #2d3748;
-    //background-color: #10b180ff;
     gap: 10px;
     width: 100%;
 `;
@@ -170,9 +169,6 @@ export const LinkContainerStyled = styled(NavLink)`
     text-decoration: none;
     height: 30px;
     width: 200px;
-
-    //background-color: #2d3748;
-    //background-color: #417dddff;
     
     &:hover {
         //background-color: #285bb5ff;

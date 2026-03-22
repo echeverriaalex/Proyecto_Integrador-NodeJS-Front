@@ -1,4 +1,5 @@
-import ActionAdventure from "../assets/imageGenres/action.jpg";
+import ActionAdventure from "../assets/imageGenres/ActionAdventure.jpg";
+import Action from "../assets/imageGenres/action.jpg";
 import Mystery from "../assets/imageGenres/mystery.png";
 import War from "../assets/imageGenres/war.webp";
 import Fantasy from "../assets/imageGenres/fantasy.jpg";
@@ -18,6 +19,13 @@ import Music from "../assets/imageGenres/Music.jpg";
 import Romance from "../assets/imageGenres/Romance.jpg";
 import ScienceFiction from "../assets/imageGenres/ScienceFiction.jpg";
 import TVMovie from "../assets/imageGenres/TVMovie.jpeg";
+import Kids from "../assets/imageGenres/Kids.jpg";
+import News from "../assets/imageGenres/News.jpg";
+import Reality from "../assets/imageGenres/Reality.jpg";
+import Soap from "../assets/imageGenres/soap.jpg";
+import Talk from "../assets/imageGenres/talk.jpg";
+import SciFiFantasy from "../assets/imageGenres/SciFiFantasy.jpg";
+import WarPolitics from "../assets/imageGenres/WarPolitics.jpg";
 
 const WallpaperGenres = {
     "Action&Adventure": ActionAdventure,
@@ -40,6 +48,14 @@ const WallpaperGenres = {
     Romance,
     ScienceFiction,
     TVMovie,
+    Kids,
+    News,
+    Reality,
+    "Sci-Fi&Fantasy": SciFiFantasy,
+    "War&Politics": WarPolitics,
+    Soap,
+    Talk,
+    Action,
 };
 
 export default WallpaperGenres;

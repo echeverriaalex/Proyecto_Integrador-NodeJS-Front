@@ -22,7 +22,7 @@ export const ModalOverLayStyled = styled(motion.div)`
 export const ContainerStyled = styled(motion.div)`
     position: fixed;
     top: 20px;
-    left: 10px;
+    right: 10px;
     z-index: 99;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,17 @@ export const ContainerStyled = styled(motion.div)`
     border-radius: 1rem;
     box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
     width: 400px;
-    max-width: 80%;    
+    max-width: 80%;
+
+    @media (max-width: 576px) {
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        padding: 12px 10px;
+    }
 
     /*
     gap: 8px;

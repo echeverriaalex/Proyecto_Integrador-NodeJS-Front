@@ -1,11 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { GenreContainerStyled, ItemsContainerStyled, PlusTextStyled, SliderContainerStyled, TextContainerStyled } from "./GenreSliderStyles";
-import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import ArrowButton from "../UI/ArrowButton/ArrowButton";
 import { formatGenreName } from "../../utils/extraFunctions";
-
 
 const GenresSlider = ({genre, itemsList, type}) => {
 
@@ -13,7 +11,6 @@ const GenresSlider = ({genre, itemsList, type}) => {
     const containerRef = useRef(null);
     const [atStart, setAtStart] = useState(true);
     const [atEnd, setAtEnd] = useState(false);
-    const { typeProduct } = useSelector((state) => state.typeProductShow);
     const normalizedGenre = formatGenreName(genre?.name);
 
     const handleClick = () => {
@@ -39,13 +36,6 @@ const GenresSlider = ({genre, itemsList, type}) => {
       setAtEnd(el.scrollLeft >= maxScrollLeft - 1);
     };
 
-    /*
-    useEffect(() => {
-        if (!typeProduct) return;
-        fetchGenres();
-    }, [typeProduct]);
-    */
-
     useEffect(() => {
       const el = containerRef.current;
       if (!el) return;
@@ -59,13 +49,8 @@ const GenresSlider = ({genre, itemsList, type}) => {
         el.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', updateEdges);
       };
-    }, [itemsList]); // recalcula cuando cambian los ítems
-
-    useEffect(() => {
-        //const urlCategory = category === "tvseries" ? "tvseries" : "movies";
-        //setUrl(urlCategory);
-    }, [type]);
-
+    }, [itemsList, type]); // recalcula cuando cambian los ítems
+    
     return (
         <GenreContainerStyled>
             <TextContainerStyled

@@ -24,7 +24,7 @@ const ProductsExplorerPage = () => {
     const category = location.pathname === "/tvseries" ? "tvseries" : "movies";
     dispatch(setTypeProductShow(category));
     setTypeProduct(category);
-    console.log("Estoy viendo la page de: ", category);
+    //console.log("Estoy viendo la page de: ", category);
   }, [location.pathname]);
 
   const fetchGenresList = async () => {
@@ -32,6 +32,9 @@ const ProductsExplorerPage = () => {
       dispatch(isFetchingGenres());
       const fetchGenresFunction = selectFetchGenreByType(typeProduct);
       const genresListProduct = await fetchGenresFunction();
+
+      //console.log("Genres list products --> ", genresListProduct);
+      
       
       if(genresListProduct){
         dispatch(successGenres(genresListProduct.genres));
@@ -55,11 +58,6 @@ const ProductsExplorerPage = () => {
       const fetchFunction = selectFetchGenreProductsByTypePaginated(typeProduct);
       const genresWithLists = await Promise.all(
         genresListProduct.genres.map(async (genre) => {
-
-          
-          //genre = genre?.replace(/\s+/g, "") || "";
-
-
           const productData = await fetchFunction(genre.id, 1); // Always fetch page 1
           return {
             genre: genre,
@@ -74,7 +72,6 @@ const ProductsExplorerPage = () => {
       setShowLoading(false);
     }
   };
-
 
   useEffect(() => {
     if (!typeProduct) return;
@@ -96,7 +93,7 @@ const ProductsExplorerPage = () => {
         </h1>
       </HeroContainerStyled>
       <Genres
-        typeProduct={typeProduct}
+        type={typeProduct}
       />
       <GenresListContainerStyled>
         {showLoading ? (

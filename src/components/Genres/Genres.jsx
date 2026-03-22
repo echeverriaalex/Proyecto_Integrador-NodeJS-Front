@@ -1,41 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 import { GenresContainerStyled, ItemContainerStyled, ItemsContainerStyled } from "./GenresStyles";
 import WallpaperGenres from "../../utils/setWallpaperGenres";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { formatGenreName, selectFetchGenreByType } from "../../utils/extraFunctions";
-import { isError, isFetching, success } from "../../redux/slice/genresSlice";
 import ArrowButton from "../UI/ArrowButton/ArrowButton";
+import { isError, isError as isErrorGenres, isFetching as isFetchingGenres, success as successGenres } from "../../redux/slice/genresSlice";
 
-const Genres = ( /*typeProduct*/ ) => {
+const Genres = ({ type }) => {
     
-    // Constantes correctas y utilizadas    
     const { genresList } = useSelector((state) => state.genres);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const containerRef = useRef(null);
     const [atStart, setAtStart] = useState(true);
     const [atEnd, setAtEnd] = useState(false);
+    const location = useLocation();
+    const [newGenresList, setNewGenresList] = useState([]);
 
-    // Constantes a revisar tu implementacion
-    const { typeProduct } = useSelector((state) => state.typeProductShow);
-
-    //const formatGenreName = (genreName) => genreName?.replace(/\s+/g, "") || "";
-    //const normalizedGenre = formatGenreName(genre?.name);
-
-    //const normalizedGenre = formatGenreName(genre?.name);
-    
     const fetchGenres = async() => {
         try{
-            dispatch(isFetching());
-            const fecthGenresProduct  = selectFetchGenreByType(typeProduct);
-            const genresData = await fecthGenresProduct();
-            console.log("Estoy en Genres fetched:", genresData);
-            dispatch(success(genresData.genres));
-            return genresData;
+            dispatch(isFetchingGenres());
+            const fetchGenresFunction = selectFetchGenreByType(type);
+            const genresListProduct = await fetchGenresFunction();
+            
+            if(genresListProduct){
+                dispatch(successGenres(genresListProduct.genres));
+                
+                setNewGenresList(genresListProduct.genres.map(genre => ({
+                    ...genre,
+                    name: genre.name,
+                    nameFormated: formatGenreName(genre.name)
+                })));
+
+                return genresListProduct;
+            }
+            else{
+                console.error(`Genres not found.`);
+            }
         }catch(error){
             dispatch(isError(error));
-            console.error("Error fetching genres:", error);
+            console.error("Error fetching genres in Genres blocks --> ", error);
         }
     };
 
@@ -57,9 +62,9 @@ const Genres = ( /*typeProduct*/ ) => {
     };
 
     useEffect(() => {
-        if (!typeProduct) return;
-        fetchGenres();
-    }, [typeProduct]);
+        if (!type) return;
+        const genresList = fetchGenres();
+    }, [type, location.pathname]);
 
     useEffect(() => {
       const el = containerRef.current;
@@ -88,27 +93,14 @@ const Genres = ( /*typeProduct*/ ) => {
                 ref={containerRef}
             >
                 {
-                    genresList.map((genre) => (
+                    newGenresList.map((genre) => (
                         <ItemContainerStyled
                             key={genre.id}
-                            $background={WallpaperGenres[genre.name]}
+                            $background={WallpaperGenres[genre.nameFormated]}
                             onClick={
-                                
-                                typeProduct === "tvseries" ? 
-                                    () => navigate(`/tvseries/${genre.name}`, {
-                                        state: { idGenre: genre.id, genre: genre.name, category: "tvseries" }
-                                    })
-                                    :
-                                    () => navigate(`/movies/${genre.name}`, {
-                                        state: { idGenre: genre.id, genre: genre.name, category: "movies" }
-                                    })
-                                
-
-                                /*
-                                navigate(`/${typeProduct}/${genre.name}`, {
-                                    state: { idGenre: genre.id, genre: genre.name, typeProduct }
+                                () => navigate(`/${type}/${genre.nameFormated}`, {
+                                    state: { idGenre: genre.id, genre: genre.nameFormated, type }
                                 })
-                                */
                             }
                         >
                             <p className="font-bold text-xl">{genre.name}</p>

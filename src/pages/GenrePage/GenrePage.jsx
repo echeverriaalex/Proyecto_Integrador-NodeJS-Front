@@ -17,7 +17,7 @@ const GenrePage = () => {
     const { productList, isLoading, error} = useSelector((state) => state.products);
     const nameGenreFormatted = genreName?.replace(/\s*&\s*/g, " & ").trim() || "";
     const [, pathTypeProduct, pathGenre ] = location.pathname.split("/");
-
+    
     const fetchProductsGenre = async () => {
         try{
             dispatch(isFetching());

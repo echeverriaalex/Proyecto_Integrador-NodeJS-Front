@@ -115,10 +115,10 @@ const Navbar = () => {
                 </LinksContainerStyled>
                 <ElementsContainerStyled>
                     <SearchBar />
+                    <CartIcon />
                     {
                     /*
                         <MenuIcon />
-                        <CartIcon />
                     */
                     }
                     {

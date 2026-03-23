@@ -85,6 +85,37 @@ export const TextHeroContainerStyled = styled.div`
   }
 `;
 
+export const ExploreGenresContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  padding: ${ themePage.dimensions.paddingSection };
+`;
+
+export const ExploreGenreContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  background-color: #083070ff;
+  border-radius: 20px;
+  padding: 40px;
+
+  h2{
+    color: #fff;
+    width: 100%;
+    padding-left: 20px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: "Besley", "Playfair Display", "Montserrat", sans-serif;
+  }
+`;
+
 export const SectionCardsContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,13 +169,14 @@ export const TextCardStyled = styled.div`
   background: linear-gradient(20deg, #d18108ff, #e48d0aff);
   clip-text: transparent;
   -webkit-background-clip: text;
+  
 
   h2, p{
     color: #fff;
     color: transparent;
     -webkit-background-clip: text;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Unbounded", "Julius Sans One", "Caveat", cursive, "Playfair Display", "Montserrat", sans-serif;
   }
 
   h2{

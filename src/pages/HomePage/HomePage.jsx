@@ -1,4 +1,4 @@
-import { CardContainerStyled, HeroContainerStyled, HeroImageStyled, HomePageWrapper, ImageCardStyled, SectionCardsContainerStyled, TextCardStyled, TextHeroContainerStyled } from "./HomePageStyles"
+import { CardContainerStyled, ExploreGenreContainerStyled, ExploreGenresContainerStyled, HeroContainerStyled, HeroImageStyled, HomePageWrapper, ImageCardStyled, SectionCardsContainerStyled, TextCardStyled, TextHeroContainerStyled } from "./HomePageStyles"
 import Hero from "../..//assets/hero3.jpg";
 import Genres from "../../components/Genres/Genres";
 
@@ -12,7 +12,20 @@ const HomePage = () => {
                     <p className="text-black">Buy whatever you want and it will be yours in an instant, forever.</p>
                 </TextHeroContainerStyled>
             </HeroContainerStyled>
-            <Genres />
+            <ExploreGenresContainerStyled>
+                <ExploreGenreContainerStyled>
+                    <h2>Tv Series</h2>
+                    <Genres 
+                        type= "tvseries"
+                    />
+                </ExploreGenreContainerStyled>
+                <ExploreGenreContainerStyled>
+                    <h2>Movies</h2>
+                    <Genres 
+                        type= "movies"
+                    />
+                </ExploreGenreContainerStyled>
+            </ExploreGenresContainerStyled>
             <SectionCardsContainerStyled>
                 <CardContainerStyled>
                     <TextCardStyled>

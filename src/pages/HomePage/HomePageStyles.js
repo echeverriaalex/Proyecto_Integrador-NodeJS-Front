@@ -114,6 +114,10 @@ export const ExploreGenreContainerStyled = styled.div`
     font-weight: 900;
     font-family: "Besley", "Playfair Display", "Montserrat", sans-serif;
   }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
 `;
 
 export const SectionCardsContainerStyled = styled.div`
@@ -146,7 +150,7 @@ export const CardContainerStyled = styled.div`
   width: 100%;
   gap: 10px;
   background-color: #083070ff;
-  padding: 20px 40px;
+  padding: 20px;
   border-radius: 20px;
   height: 500px;
 
@@ -164,7 +168,7 @@ export const TextCardStyled = styled.div`
   width: 50%;
   height: 100%;
   gap: 20px;
-  padding: 40px;
+  padding: 40px 0px;
   //border-radius: 20px 30px 10px 50px;
   background: linear-gradient(20deg, #d18108ff, #e48d0aff);
   clip-text: transparent;
@@ -180,11 +184,21 @@ export const TextCardStyled = styled.div`
   }
 
   h2{
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   p{
     font-size: 1.3rem;
+  }
+
+  @media (max-width: 882px){
+    h2{
+      font-size: 2.3rem;
+    }
+
+    p{
+      font-size: 1rem;
+    }
   }
 
   @media (max-width: 576px) {

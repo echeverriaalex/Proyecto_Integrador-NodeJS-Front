@@ -5,12 +5,14 @@ export const GenresContainerStyled = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-    padding: 20px;
+    height: 250px;
+
+    //background-color: #34cc26;
     
     @media (max-width: 576px) {
-        padding: ${ themePage.dimensions.paddingSection };
+        height: 150px;
+        //padding: ${ themePage.dimensions.paddingSection };
     }
 `;
 
@@ -39,15 +41,54 @@ export const ItemsContainerStyled = styled.div`
 
 export const ItemContainerStyled = styled.div`
     display: flex;
+    position: relative;
+    overflow: hidden;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #000;
     min-width: 250px;
-    height: 150px;    
+    height: 200px;
     border: 1px solid #fff;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(${props => props.$background});
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: backgroundSwap 5s ease-in-out infinite;
+        transition: opacity 0.8s ease-in-out;
+        z-index: 0;
+    }
+
+    &:nth-child(odd)::before {
+        animation-delay: -2.5s;
+    }
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes backgroundSwap {
+        0%,
+        30% {
+            opacity: 0;
+        }
+        50%,
+        80% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
 
     img{
         width: 100%;
@@ -60,13 +101,13 @@ export const ItemContainerStyled = styled.div`
         padding: 5px 10px;
         color: #fff;
         border-radius: 5px;
+        transition: background-color 0.35s ease;
+        background-color: #000000a8;
     }
 
     &&:hover{
-        background-image: url(${props => props.$background});
-        background-size: cover;
-        background-position: center;
-        transition: all 0.3s ease-in-out;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 
         p{
             background-color: #000000a8;
@@ -76,9 +117,6 @@ export const ItemContainerStyled = styled.div`
     @media (max-width: 576px) {
         min-width: 200px;
         height: 120px;
-        background-image: url(${props => props.$background});
-        background-size: cover;
-        background-position: center;
 
         p{
             background-color: #000000a8;

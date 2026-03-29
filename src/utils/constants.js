@@ -24,3 +24,5 @@ export const TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMmQyOTEyNTYyODIyNDI0NjQ4M
 //export const BASE_URL = "https://proyecto-integrador-nodejs-back.onrender.com"; // reemplazar por url de deploy
 export const BASE_URL = "https://proyecto-integrador-node-js-back.vercel.app";
 //export const BASE_URL = "http://localhost:4000";
+export const API_KEY = "c2d2912562822424648241ed28a0f785";
+export const API_URL_SEARCH = `https://api.themoviedb.org/3/search/multi`;

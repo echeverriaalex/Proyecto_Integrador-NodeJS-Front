@@ -13,6 +13,7 @@ import MyCartPage from "../pages/MyCartPage/MyCartPage";
 import ErrorNotFoundPage from "../pages/ErrorNotFoundPage/ErrorNotFoundPage";
 import SuccessfulPage from "../pages/SuccessfulPage/SuccessfulPage";
 import OrderDetailsPage from "../pages/OrderDetailsPage/OrderDetailsPage";
+import SearchPage from "../pages/SearchPage/SearchPage";
 
 const PUBLIC_ROUTES = [
   { path: "/", element: <HomePage /> },
@@ -25,6 +26,7 @@ const PUBLIC_ROUTES = [
   { path: "/register", element: <RegisterPage /> },
   { path: "/about", element: <AboutPage /> },
   { path: "/contact", element: <ContactPage /> },
+  { path: "/search/:query", element: <SearchPage /> },
 ];
 
 const PROTECTED_ROUTES = [
